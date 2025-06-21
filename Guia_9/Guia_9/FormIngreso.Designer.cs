@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIngreso));
             this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.TLPForm = new System.Windows.Forms.TableLayoutPanel();
             this.TxtTelefono2 = new System.Windows.Forms.TextBox();
@@ -47,15 +49,17 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.PanelBajo = new System.Windows.Forms.Panel();
             this.TableLayoutPanelBajo = new System.Windows.Forms.TableLayoutPanel();
-            this.BtnIngresar = new System.Windows.Forms.Button();
             this.PanelProgres = new System.Windows.Forms.Panel();
             this.Progres = new System.Windows.Forms.ProgressBar();
+            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.Ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.PanelPrincipal.SuspendLayout();
             this.TLPForm.SuspendLayout();
             this.GBModalidadPago.SuspendLayout();
             this.PanelBajo.SuspendLayout();
             this.TableLayoutPanelBajo.SuspendLayout();
             this.PanelProgres.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Ep)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelPrincipal
@@ -295,6 +299,26 @@
             this.TableLayoutPanelBajo.Size = new System.Drawing.Size(780, 64);
             this.TableLayoutPanelBajo.TabIndex = 0;
             // 
+            // PanelProgres
+            // 
+            this.PanelProgres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
+            this.PanelProgres.Controls.Add(this.Progres);
+            this.PanelProgres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelProgres.Location = new System.Drawing.Point(0, 0);
+            this.PanelProgres.Name = "PanelProgres";
+            this.PanelProgres.Size = new System.Drawing.Size(780, 23);
+            this.PanelProgres.TabIndex = 2;
+            // 
+            // Progres
+            // 
+            this.Progres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
+            this.Progres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Progres.Location = new System.Drawing.Point(0, 0);
+            this.Progres.Name = "Progres";
+            this.Progres.Size = new System.Drawing.Size(780, 23);
+            this.Progres.TabIndex = 1;
+            this.Progres.Visible = false;
+            // 
             // BtnIngresar
             // 
             this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -318,25 +342,11 @@
             this.BtnIngresar.EnabledChanged += new System.EventHandler(this.BtnIngresar_EnabledChanged);
             this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
-            // PanelProgres
+            // Ep
             // 
-            this.PanelProgres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
-            this.PanelProgres.Controls.Add(this.Progres);
-            this.PanelProgres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelProgres.Location = new System.Drawing.Point(0, 0);
-            this.PanelProgres.Name = "PanelProgres";
-            this.PanelProgres.Size = new System.Drawing.Size(780, 23);
-            this.PanelProgres.TabIndex = 2;
-            // 
-            // Progres
-            // 
-            this.Progres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
-            this.Progres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Progres.Location = new System.Drawing.Point(0, 0);
-            this.Progres.Name = "Progres";
-            this.Progres.Size = new System.Drawing.Size(780, 23);
-            this.Progres.TabIndex = 1;
-            this.Progres.Visible = false;
+            this.Ep.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.Ep.ContainerControl = this;
+            this.Ep.Icon = ((System.Drawing.Icon)(resources.GetObject("Ep.Icon")));
             // 
             // FormIngreso
             // 
@@ -364,6 +374,7 @@
             this.PanelBajo.ResumeLayout(false);
             this.TableLayoutPanelBajo.ResumeLayout(false);
             this.PanelProgres.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Ep)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,5 +403,6 @@
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.Panel PanelProgres;
         private System.Windows.Forms.ProgressBar Progres;
+        private System.Windows.Forms.ErrorProvider Ep;
     }
 }

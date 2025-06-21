@@ -150,7 +150,7 @@ namespace Guia_9
         private void FormConsulta_Load(object sender, EventArgs e)
         {
             ConfigurarDGV();
-
+            EP.SetError(TxtDni, "Para buscar por dni ingrese un numero");
         }
 
         private void ObtenerPersonas(string consulta)
@@ -209,13 +209,17 @@ namespace Guia_9
 
         private void TxtDni_TextChanged(object sender, EventArgs e)
         {
+
             if (TxtDni.Text.Length > 0)
             {
                 BtnBuscar.Enabled = true;
+                EP.Clear();
             }
             else
             {
                 BtnBuscar.Enabled = false;
+                EP.SetError(TxtDni, "Para buscar por dni ingrese un numero");
+
             }
         }
 

@@ -68,6 +68,41 @@ namespace Guia_9
 
             BtnIngresar.Enabled = nom && ape && dni && tel && tel2 && dire;
             SacarDobleEspacio();
+            RevisionIngreso(nom, ape, dni, tel, tel2, dire);
+        }
+
+        private void RevisionIngreso(bool nom, bool ape, bool dni, bool tel, bool tel2, bool dire)
+        {
+            Ep.Clear();
+            if (!nom)
+            {
+                Ep.SetError(TxtNombre, "El nombre debe tener mas de tres caracteres");
+            }
+            if (!ape)
+            {
+                Ep.SetError(TxtApellido, "El apellido debe tener mas de tres caracteres");
+
+            }
+            if (!dni)
+            {
+                Ep.SetError(TxtDni, "El dni debe tener 8 numeros");
+
+            }
+            if (!tel)
+            {
+                Ep.SetError(TxtTelefono, "El telefono debe tener 8 o mas caracteres");
+
+            }
+            if (!tel2)
+            {
+                Ep.SetError(TxtTelefono2, "El telefono 2 debe tener 8 o mas caracteres");
+
+            }
+            if (!dire)
+            {
+                Ep.SetError(TxtDireccion, "La direccion debe tener 4 o mas caracteres");
+
+            }
         }
 
         private void BtnIngresar_EnabledChanged(object sender, EventArgs e)
