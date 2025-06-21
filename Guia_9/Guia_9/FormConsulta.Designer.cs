@@ -28,30 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsulta));
             this.PanelTop = new System.Windows.Forms.Panel();
             this.TLPTop = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.BtnBuscar = new System.Windows.Forms.Button();
             this.TxtDni = new System.Windows.Forms.TextBox();
-            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.PanelBajo = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnEditar = new System.Windows.Forms.Button();
-            this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.BtnEliminar = new System.Windows.Forms.Button();
+            this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.Progres = new System.Windows.Forms.ProgressBar();
+            this.EP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BackWork = new System.ComponentModel.BackgroundWorker();
+            this.PanelProgres = new System.Windows.Forms.Panel();
             this.PanelTop.SuspendLayout();
             this.TLPTop.SuspendLayout();
             this.PanelBajo.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.PanelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
+            this.PanelProgres.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelTop
             // 
             this.PanelTop.Controls.Add(this.TLPTop);
             this.PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelTop.Location = new System.Drawing.Point(0, 0);
+            this.PanelTop.Location = new System.Drawing.Point(0, 23);
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.Size = new System.Drawing.Size(770, 64);
             this.PanelTop.TabIndex = 0;
@@ -59,10 +67,10 @@
             // TLPTop
             // 
             this.TLPTop.ColumnCount = 3;
-            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TLPTop.Controls.Add(this.BtnIngresar, 0, 0);
+            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.85715F));
+            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+            this.TLPTop.Controls.Add(this.BtnBuscar, 0, 0);
             this.TLPTop.Controls.Add(this.TxtDni, 0, 0);
             this.TLPTop.Controls.Add(this.label1, 0, 0);
             this.TLPTop.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -73,41 +81,48 @@
             this.TLPTop.Size = new System.Drawing.Size(770, 64);
             this.TLPTop.TabIndex = 0;
             // 
-            // label1
+            // BtnBuscar
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(219, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "DNI:";
+            this.BtnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BtnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            this.BtnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnBuscar.Enabled = false;
+            this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            this.BtnBuscar.FlatAppearance.BorderSize = 2;
+            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            this.BtnBuscar.Location = new System.Drawing.Point(552, 16);
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Size = new System.Drawing.Size(105, 32);
+            this.BtnBuscar.TabIndex = 11;
+            this.BtnBuscar.Text = "BUSCAR";
+            this.BtnBuscar.UseVisualStyleBackColor = false;
+            this.BtnBuscar.EnabledChanged += new System.EventHandler(this.BtnBuscar_EnabledChanged);
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // TxtDni
             // 
             this.TxtDni.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TxtDni.BackColor = System.Drawing.Color.White;
-            this.TxtDni.Location = new System.Drawing.Point(259, 19);
+            this.TxtDni.Location = new System.Drawing.Point(222, 19);
             this.TxtDni.MaxLength = 50;
             this.TxtDni.Name = "TxtDni";
             this.TxtDni.Size = new System.Drawing.Size(250, 25);
             this.TxtDni.TabIndex = 10;
+            this.TxtDni.TextChanged += new System.EventHandler(this.TxtDni_TextChanged);
+            this.TxtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDni_KeyPress);
             // 
-            // BtnIngresar
+            // label1
             // 
-            this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BtnIngresar.BackColor = System.Drawing.Color.Gainsboro;
-            this.BtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnIngresar.FlatAppearance.BorderSize = 0;
-            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnIngresar.Location = new System.Drawing.Point(515, 16);
-            this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(105, 32);
-            this.BtnIngresar.TabIndex = 11;
-            this.BtnIngresar.Text = "BUSCAR";
-            this.BtnIngresar.UseVisualStyleBackColor = false;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(182, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "DNI:";
             // 
             // PanelBajo
             // 
@@ -149,16 +164,6 @@
             this.BtnEditar.Text = "EDITAR";
             this.BtnEditar.UseVisualStyleBackColor = false;
             // 
-            // PanelPrincipal
-            // 
-            this.PanelPrincipal.Controls.Add(this.DGV);
-            this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelPrincipal.Location = new System.Drawing.Point(0, 64);
-            this.PanelPrincipal.Name = "PanelPrincipal";
-            this.PanelPrincipal.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
-            this.PanelPrincipal.Size = new System.Drawing.Size(770, 252);
-            this.PanelPrincipal.TabIndex = 2;
-            // 
             // BtnEliminar
             // 
             this.BtnEliminar.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -174,17 +179,65 @@
             this.BtnEliminar.Text = "ELIMINAR";
             this.BtnEliminar.UseVisualStyleBackColor = false;
             // 
+            // PanelPrincipal
+            // 
+            this.PanelPrincipal.Controls.Add(this.DGV);
+            this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelPrincipal.Location = new System.Drawing.Point(0, 87);
+            this.PanelPrincipal.Name = "PanelPrincipal";
+            this.PanelPrincipal.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
+            this.PanelPrincipal.Size = new System.Drawing.Size(770, 229);
+            this.PanelPrincipal.TabIndex = 2;
+            // 
             // DGV
             // 
             this.DGV.AllowUserToAddRows = false;
             this.DGV.AllowUserToDeleteRows = false;
+            this.DGV.AllowUserToResizeColumns = false;
+            this.DGV.AllowUserToResizeRows = false;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGV.Location = new System.Drawing.Point(16, 0);
+            this.DGV.MultiSelect = false;
             this.DGV.Name = "DGV";
             this.DGV.ReadOnly = true;
-            this.DGV.Size = new System.Drawing.Size(738, 252);
+            this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV.Size = new System.Drawing.Size(738, 229);
             this.DGV.TabIndex = 0;
+            // 
+            // Progres
+            // 
+            this.Progres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
+            this.Progres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Progres.Location = new System.Drawing.Point(0, 0);
+            this.Progres.Name = "Progres";
+            this.Progres.Size = new System.Drawing.Size(770, 23);
+            this.Progres.TabIndex = 1;
+            this.Progres.Visible = false;
+            // 
+            // EP
+            // 
+            this.EP.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.EP.ContainerControl = this;
+            this.EP.Icon = ((System.Drawing.Icon)(resources.GetObject("EP.Icon")));
+            // 
+            // BackWork
+            // 
+            this.BackWork.WorkerReportsProgress = true;
+            this.BackWork.WorkerSupportsCancellation = true;
+            this.BackWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackWork_DoWork);
+            this.BackWork.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackWork_ProgressChanged);
+            this.BackWork.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackWork_RunWorkerCompleted);
+            // 
+            // PanelProgres
+            // 
+            this.PanelProgres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
+            this.PanelProgres.Controls.Add(this.Progres);
+            this.PanelProgres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelProgres.Location = new System.Drawing.Point(0, 0);
+            this.PanelProgres.Name = "PanelProgres";
+            this.PanelProgres.Size = new System.Drawing.Size(770, 23);
+            this.PanelProgres.TabIndex = 1;
             // 
             // FormConsulta
             // 
@@ -194,6 +247,7 @@
             this.Controls.Add(this.PanelPrincipal);
             this.Controls.Add(this.PanelBajo);
             this.Controls.Add(this.PanelTop);
+            this.Controls.Add(this.PanelProgres);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -201,6 +255,7 @@
             this.Name = "FormConsulta";
             this.ShowIcon = false;
             this.Text = "FormConsulta";
+            this.Activated += new System.EventHandler(this.FormConsulta_Activated);
             this.Load += new System.EventHandler(this.FormConsulta_Load);
             this.PanelTop.ResumeLayout(false);
             this.TLPTop.ResumeLayout(false);
@@ -209,6 +264,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.PanelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
+            this.PanelProgres.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -219,12 +276,16 @@
         private System.Windows.Forms.TableLayoutPanel TLPTop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtDni;
-        private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.Button BtnBuscar;
         private System.Windows.Forms.Panel PanelBajo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button BtnEditar;
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Panel PanelPrincipal;
         private System.Windows.Forms.DataGridView DGV;
+        private System.Windows.Forms.ErrorProvider EP;
+        private System.Windows.Forms.ProgressBar Progres;
+        private System.ComponentModel.BackgroundWorker BackWork;
+        private System.Windows.Forms.Panel PanelProgres;
     }
 }

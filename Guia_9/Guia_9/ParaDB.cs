@@ -10,7 +10,7 @@ namespace VariablesDB
     public static class ParaDB
     {
         public static OleDbConnection ConexionConDB;
-        public static string strConecion = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=personasmdb.mdb;";
+        public static string strConecion = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=|DataDirectory|personasmdb.mdb;";
         public static OleDbCommand Orden;
         public static OleDbDataReader lector;
     }

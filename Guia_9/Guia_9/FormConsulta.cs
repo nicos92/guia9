@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FuncionesDB;
 using System.Data.OleDb;
+using Validacion;
+using Colores;
+using System.Threading;
+using VariablesDB;
 
 namespace Guia_9
 {
@@ -24,7 +28,7 @@ namespace Guia_9
         private BindingList<Persona> _personasBindingList;
 
         // 2. Configuración inicial del DataGridView
-        private void ConfigureGridView()
+        private void ConfigurarDGV()
         {
             // Desactivar características que impactan el rendimiento
             DGV.AutoGenerateColumns = false;
@@ -100,7 +104,7 @@ namespace Guia_9
             {
                 Name = "colMensualQuincenal",
                 DataPropertyName = "MensualQuincenal",
-                HeaderText = "MensualQuincenal",
+                HeaderText = "Mensual - Quincenal",
                 Width = 150
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
@@ -108,12 +112,12 @@ namespace Guia_9
                 Name = "colBaja",
                 DataPropertyName = "Baja",
                 HeaderText = "Baja",
-                Width = 150
+                Width = 50
             });
         }
 
         // 3. Cargar datos de forma eficiente
-        private void LoadLargeData(List<Persona> datosCompletos)
+        private void CargarDatos(List<Persona> datosCompletos)
         {
             // Usar VirtualMode para grandes conjuntos de datos
             DGV.VirtualMode = true;
@@ -127,11 +131,11 @@ namespace Guia_9
             DGV.DataSource = bindingSource;
 
             // Opcional: Paginación para mejor rendimiento
-            ConfigurePagination(bindingSource);
+            ConfigurarPaginas(bindingSource);
         }
 
         // 4. Implementar paginación (opcional pero recomendado)
-        private void ConfigurePagination(BindingSource bindingSource)
+        private void ConfigurarPaginas(BindingSource bindingSource)
         {
             // Ejemplo básico de paginación
             int pageSize = 100;
@@ -145,18 +149,23 @@ namespace Guia_9
 
         private void FormConsulta_Load(object sender, EventArgs e)
         {
-            ConfigureGridView();
+            ConfigurarDGV();
+            //ObtenerPersonas();
+        }
+
+        private void ObtenerPersonas()
+        {
             OleDbDataReader lector = null;
             try
             {
                 AccesoDB.ConectarDB();
-                MessageBox.Show("Conexion Exitosa con la base de datos");
-                string consulta = "SELECT * FROM personas WHERE baja = false;";
+                string consulta = "SELECT * FROM personas;";
                 lector = AccesoDB.LecturaDB(consulta);
                 List<Persona> personas = new List<Persona>();
                 while (lector.Read())
                 {
                     string mensual = Convert.ToBoolean(lector[8]) ? "Mensual" : "Quincenal";
+                    string baja = Convert.ToBoolean(lector[9]) ? "Si" : "No";
                     Persona lapersona = new Persona()
                     {
                         Id = Convert.ToInt32(lector[0]),
@@ -168,19 +177,14 @@ namespace Guia_9
                         Direccion = lector[6].ToString(),
                         Telefono2 = lector[7].ToString(),
                         MensualQuincenal = mensual,
-                        Baja = Convert.ToBoolean(lector[9])
+                        Baja = baja
                     };
                     personas.Add(lapersona);
                 }
-
-                
-                lector.Close();
-                AccesoDB.CerrarDB();
-                LoadLargeData(personas);
+                CargarDatos(personas);
             }
             catch
             {
-
                 MessageBox.Show("Error al Abrir la base de datos");
             }
             finally
@@ -188,6 +192,122 @@ namespace Guia_9
                 lector.Close();
                 AccesoDB.CerrarDB();
             }
+        }
+
+        private void TxtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.Numeros(ref e);
+            Validaciones.Borrar(ref e);
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            BtnBuscar.Enabled = false;
+            Progres.Visible = true;
+            BackWork.RunWorkerAsync();
+
+        }
+
+        private void BuscarPorDni()
+        {
+            OleDbDataReader lector = null;
+            try
+            {
+                string dni = TxtDni.Text;
+                AccesoDB.ConectarDB();
+                string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
+                lector = AccesoDB.LecturaDB(consulta);
+                List<Persona> personas = new List<Persona>();
+                while (lector.Read())
+                {
+                    string mensual = Convert.ToBoolean(lector[8]) ? "Mensual" : "Quincenal";
+                    string baja = Convert.ToBoolean(lector[9]) ? "Si" : "No";
+
+                    Persona lapersona = new Persona()
+                    {
+                        Id = Convert.ToInt32(lector[0]),
+                        Legajo = Convert.ToInt32(lector[1]),
+                        Dni = Convert.ToInt32(lector[2]),
+                        Apellido = lector[3].ToString(),
+                        Nombre = lector[4].ToString(),
+                        Telefono = lector[5].ToString(),
+                        Direccion = lector[6].ToString(),
+                        Telefono2 = lector[7].ToString(),
+                        MensualQuincenal = mensual,
+                        Baja = baja
+                    };
+                    personas.Add(lapersona);
+                }
+                CargarDatos(personas);
+            }
+            catch
+            {
+                MessageBox.Show("Error al Abrir la base de datos");
+            }
+            finally
+            {
+                lector.Close();
+                AccesoDB.CerrarDB();
+            }
+        }
+
+        private void TxtDni_TextChanged(object sender, EventArgs e)
+        {
+            if (TxtDni.Text.Length > 0)
+            {
+                BtnBuscar.Enabled = true;
+            }
+            else
+            {
+                BtnBuscar.Enabled = false;
+            }
+        }
+
+        private void BtnBuscar_EnabledChanged(object sender, EventArgs e)
+        {
+            if (BtnBuscar.Enabled)
+            {
+                BtnBuscar.ForeColor = MaterialColors.Blue500;
+                BtnBuscar.FlatAppearance.BorderColor = MaterialColors.Blue500;
+                BtnBuscar.BackColor = Color.White; ;
+            }
+            else
+            {
+                BtnBuscar.ForeColor = MaterialColors.Grey500;
+                BtnBuscar.FlatAppearance.BorderColor = MaterialColors.Grey500;
+                BtnBuscar.BackColor = MaterialColors.Grey50;
+            }
+        }
+
+        private void BackWork_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(5);
+                worker.ReportProgress(i);
+            }
+        }
+
+        private void BackWork_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Progres.Value = e.ProgressPercentage;
+        }
+
+        private void BackWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            BuscarPorDni();
+            BtnBuscar.Enabled = true;
+            Progres.Visible = false;
+
+         
+        }
+
+        private void FormConsulta_Activated(object sender, EventArgs e)
+        {
+            ObtenerPersonas();
+
         }
     }
 }

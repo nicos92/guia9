@@ -25,8 +25,9 @@ namespace FuncionesDB
             return ParaDB.lector;
         }
 
-        public static int InsertarNombre(string consulta)
+        public static int Insertar(string consulta)
         {
+
             ParaDB.Orden = new OleDbCommand(consulta, ParaDB.ConexionConDB);
             
             return ParaDB.Orden.ExecuteNonQuery();

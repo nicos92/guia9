@@ -8,7 +8,7 @@ namespace Guia_9
 {
     public class Persona
     {
-        public Persona(int id, int legajo, int dni, string apellido, string nombre, string telefono, string telefono2, string direccion, string mensualQuincenal, bool baja)
+        public Persona(int id, int legajo, int dni, string apellido, string nombre, string telefono, string telefono2, string direccion, string mensualQuincenal, string baja)
         {
             Id = id;
             Legajo = legajo;
@@ -39,7 +39,7 @@ namespace Guia_9
         public string Telefono2 { get; set; }
         public string Direccion { get; set; }
         public string MensualQuincenal { get; set; }
-        public bool Baja { get; set; }
+        public string Baja { get; set; }
 
 
     }
