@@ -37,5 +37,12 @@ namespace FuncionesDB
         {
             ParaDB.ConexionConDB.Close();
         }
+
+        internal static int Eliminar(string consulta)
+        {
+            ParaDB.Orden = new OleDbCommand(consulta, ParaDB.ConexionConDB);
+
+            return ParaDB.Orden.ExecuteNonQuery();
+        }
     }
 }

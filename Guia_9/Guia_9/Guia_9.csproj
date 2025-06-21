@@ -71,7 +71,7 @@
     <Compile Include="FormInicio.Designer.cs">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="MaterialDesignFullPalette.cs" />
+    <Compile Include="PaletaColores.cs" />
     <Compile Include="ParaDB.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Program.cs" />
@@ -114,6 +114,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-magnifying-glass 24 blue450.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-plus 24 blue50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-plus 32 blue450.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-magnifying-glass 32 blue450.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-plus 32 blue50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-magnifying-glass 32 blue50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-pen 24 blue50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-can 24 blue50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-pen 24 yellow50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-can 24 red50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-magnifying-glass 24 blue50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users 24 blue50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

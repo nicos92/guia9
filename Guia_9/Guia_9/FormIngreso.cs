@@ -74,14 +74,14 @@ namespace Guia_9
         {
             if (BtnIngresar.Enabled)
             {
-                BtnIngresar.ForeColor = MaterialColors.Blue50;
-                BtnIngresar.FlatAppearance.BorderColor = MaterialColors.Blue50;
-                BtnIngresar.BackColor = MaterialColors.Blue500;
+                BtnIngresar.ForeColor = PaletaColores.Blue50;
+                BtnIngresar.FlatAppearance.BorderColor = PaletaColores.Blue50;
+                BtnIngresar.BackColor = PaletaColores.Blue500;
             }
             else
             {
-                BtnIngresar.FlatAppearance.BorderColor = MaterialColors.Grey50;
-                BtnIngresar.BackColor = MaterialColors.Grey300;
+                BtnIngresar.FlatAppearance.BorderColor = PaletaColores.Grey50;
+                BtnIngresar.BackColor = PaletaColores.Grey300;
             }
         }
 
@@ -98,7 +98,7 @@ namespace Guia_9
                 lector = AccesoDB.LecturaDB(consulta);
                 while (lector.Read())
                 {
-                    legajo = Convert.ToInt32(lector[0]) + 1;
+                    legajo = lector[0] == DBNull.Value ? 1 : Convert.ToInt32(lector[0]) + 1;
                 }
                 lector.Close();
                 AccesoDB.CerrarDB();
@@ -109,24 +109,26 @@ namespace Guia_9
 
                 consulta = $"INSERT INTO personas (legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja) VALUES ({legajo},{TxtDni.Text},'{TxtApellido.Text}','{TxtNombre.Text}','{TxtTelefono.Text}','{TxtDireccion.Text}','{TxtTelefono2.Text}', {menquin}, {false});";
 
-             
+
                 int res = AccesoDB.Insertar(consulta);
 
                 if (res > 0)
                 {
-                    MessageBox.Show("ingreso Correcto");
+                    MessageBox.Show("Ingreso Correcto", "Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarForm();
                 }
 
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show(ex.Message, "Error al Abrir la base de datos");
+                string error = ex.Message.Contains("valores duplicados") ? "DNI duplicado" : ex.Message;
+                MessageBox.Show(error, "Error en la base de datos",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
                 lector.Close();
                 AccesoDB.CerrarDB();
+                TxtNombre.Focus();
             }
         }
 

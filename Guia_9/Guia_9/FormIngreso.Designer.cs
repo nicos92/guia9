@@ -47,9 +47,9 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.PanelBajo = new System.Windows.Forms.Panel();
             this.TableLayoutPanelBajo = new System.Windows.Forms.TableLayoutPanel();
-            this.BtnIngresar = new System.Windows.Forms.Button();
             this.PanelProgres = new System.Windows.Forms.Panel();
             this.Progres = new System.Windows.Forms.ProgressBar();
+            this.BtnIngresar = new System.Windows.Forms.Button();
             this.PanelPrincipal.SuspendLayout();
             this.TLPForm.SuspendLayout();
             this.GBModalidadPago.SuspendLayout();
@@ -295,26 +295,6 @@
             this.TableLayoutPanelBajo.Size = new System.Drawing.Size(780, 64);
             this.TableLayoutPanelBajo.TabIndex = 0;
             // 
-            // BtnIngresar
-            // 
-            this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.BtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnIngresar.Enabled = false;
-            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.BtnIngresar.FlatAppearance.BorderSize = 2;
-            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnIngresar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.BtnIngresar.Location = new System.Drawing.Point(326, 8);
-            this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(128, 48);
-            this.BtnIngresar.TabIndex = 0;
-            this.BtnIngresar.Text = "INGRESAR";
-            this.BtnIngresar.UseVisualStyleBackColor = false;
-            this.BtnIngresar.EnabledChanged += new System.EventHandler(this.BtnIngresar_EnabledChanged);
-            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
-            // 
             // PanelProgres
             // 
             this.PanelProgres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
@@ -334,6 +314,29 @@
             this.Progres.Size = new System.Drawing.Size(780, 23);
             this.Progres.TabIndex = 1;
             this.Progres.Visible = false;
+            // 
+            // BtnIngresar
+            // 
+            this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnIngresar.Enabled = false;
+            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnIngresar.FlatAppearance.BorderSize = 2;
+            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnIngresar.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.BtnIngresar.Image = global::Guia_9.Properties.Resources.user_plus_24_blue50;
+            this.BtnIngresar.Location = new System.Drawing.Point(316, 8);
+            this.BtnIngresar.Name = "BtnIngresar";
+            this.BtnIngresar.Size = new System.Drawing.Size(148, 48);
+            this.BtnIngresar.TabIndex = 0;
+            this.BtnIngresar.Text = "INGRESAR";
+            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnIngresar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnIngresar.UseVisualStyleBackColor = false;
+            this.BtnIngresar.EnabledChanged += new System.EventHandler(this.BtnIngresar_EnabledChanged);
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // FormIngreso
             // 

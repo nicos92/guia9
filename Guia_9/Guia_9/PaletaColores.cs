@@ -2,7 +2,7 @@ using System.Drawing;
 
 namespace Colores
 {
-    public static class MaterialColors
+    public static class PaletaColores
     {
         public static readonly Color Red50 = Color.FromArgb(255, 235, 238);
         public static readonly Color Red100 = Color.FromArgb(255, 205, 210);

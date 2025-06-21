@@ -67,15 +67,20 @@
             this.BtnConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.BtnConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnConsulta.FlatAppearance.BorderSize = 0;
+            this.BtnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
+            this.BtnConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
             this.BtnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConsulta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.BtnConsulta.Image = global::Guia_9.Properties.Resources.user_magnifying_glass_32_blue50;
             this.BtnConsulta.Location = new System.Drawing.Point(392, 0);
             this.BtnConsulta.Margin = new System.Windows.Forms.Padding(0);
             this.BtnConsulta.Name = "BtnConsulta";
             this.BtnConsulta.Size = new System.Drawing.Size(392, 64);
             this.BtnConsulta.TabIndex = 1;
             this.BtnConsulta.Text = "CONSULTA";
+            this.BtnConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnConsulta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnConsulta.UseVisualStyleBackColor = false;
             this.BtnConsulta.Click += new System.EventHandler(this.BtnForms);
             // 
@@ -84,15 +89,20 @@
             this.BtnIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.BtnIngreso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnIngreso.FlatAppearance.BorderSize = 0;
+            this.BtnIngreso.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
+            this.BtnIngreso.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
             this.BtnIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngreso.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.BtnIngreso.Image = global::Guia_9.Properties.Resources.user_plus_32_blue50;
             this.BtnIngreso.Location = new System.Drawing.Point(0, 0);
             this.BtnIngreso.Margin = new System.Windows.Forms.Padding(0);
             this.BtnIngreso.Name = "BtnIngreso";
             this.BtnIngreso.Size = new System.Drawing.Size(392, 64);
             this.BtnIngreso.TabIndex = 0;
             this.BtnIngreso.Text = "INGRESO";
+            this.BtnIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnIngreso.UseVisualStyleBackColor = false;
             this.BtnIngreso.Click += new System.EventHandler(this.BtnForms);
             // 

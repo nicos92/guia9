@@ -47,15 +47,15 @@ namespace Guia_9
             {
                 Name = "colId",
                 DataPropertyName = "Id",
-                HeaderText = "Id",
+                HeaderText = "ID",
                 Width = 50
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colLegajo",
                 DataPropertyName = "Legajo",
-                HeaderText = "Legajo",
-                Width = 50
+                HeaderText = "LEGAJO",
+                Width = 60
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
@@ -68,14 +68,14 @@ namespace Guia_9
             {
                 Name = "colApellido",
                 DataPropertyName = "Apellido",
-                HeaderText = "Apellido",
+                HeaderText = "APELLIDO",
                 Width = 150
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colNombre",
                 DataPropertyName = "Nombre",
-                HeaderText = "Nombre",
+                HeaderText = "NOMBRE",
                 Width = 150
             });
 
@@ -83,35 +83,35 @@ namespace Guia_9
             {
                 Name = "colTelefono",
                 DataPropertyName = "Telefono",
-                HeaderText = "Telefono",
-                Width = 80
+                HeaderText = "TELEFONO",
+                Width = 90
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colTelefono2",
                 DataPropertyName = "Telefono2",
-                HeaderText = "Telefono2",
-                Width = 80
+                HeaderText = "TELEFONO 2",
+                Width = 90
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colDireccion",
                 DataPropertyName = "Direccion",
-                HeaderText = "Direccion",
+                HeaderText = "DIRECCION",
                 Width = 150
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colMensualQuincenal",
                 DataPropertyName = "MensualQuincenal",
-                HeaderText = "Mensual - Quincenal",
+                HeaderText = "MENSUAL - QUINCENAL",
                 Width = 150
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colBaja",
                 DataPropertyName = "Baja",
-                HeaderText = "Baja",
+                HeaderText = "BAJA",
                 Width = 50
             });
         }
@@ -150,16 +150,15 @@ namespace Guia_9
         private void FormConsulta_Load(object sender, EventArgs e)
         {
             ConfigurarDGV();
-            //ObtenerPersonas();
+
         }
 
-        private void ObtenerPersonas()
+        private void ObtenerPersonas(string consulta)
         {
             OleDbDataReader lector = null;
             try
             {
                 AccesoDB.ConectarDB();
-                string consulta = "SELECT * FROM personas;";
                 lector = AccesoDB.LecturaDB(consulta);
                 List<Persona> personas = new List<Persona>();
                 while (lector.Read())
@@ -208,49 +207,6 @@ namespace Guia_9
 
         }
 
-        private void BuscarPorDni()
-        {
-            OleDbDataReader lector = null;
-            try
-            {
-                string dni = TxtDni.Text;
-                AccesoDB.ConectarDB();
-                string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
-                lector = AccesoDB.LecturaDB(consulta);
-                List<Persona> personas = new List<Persona>();
-                while (lector.Read())
-                {
-                    string mensual = Convert.ToBoolean(lector[8]) ? "Mensual" : "Quincenal";
-                    string baja = Convert.ToBoolean(lector[9]) ? "Si" : "No";
-
-                    Persona lapersona = new Persona()
-                    {
-                        Id = Convert.ToInt32(lector[0]),
-                        Legajo = Convert.ToInt32(lector[1]),
-                        Dni = Convert.ToInt32(lector[2]),
-                        Apellido = lector[3].ToString(),
-                        Nombre = lector[4].ToString(),
-                        Telefono = lector[5].ToString(),
-                        Direccion = lector[6].ToString(),
-                        Telefono2 = lector[7].ToString(),
-                        MensualQuincenal = mensual,
-                        Baja = baja
-                    };
-                    personas.Add(lapersona);
-                }
-                CargarDatos(personas);
-            }
-            catch
-            {
-                MessageBox.Show("Error al Abrir la base de datos");
-            }
-            finally
-            {
-                lector.Close();
-                AccesoDB.CerrarDB();
-            }
-        }
-
         private void TxtDni_TextChanged(object sender, EventArgs e)
         {
             if (TxtDni.Text.Length > 0)
@@ -267,15 +223,13 @@ namespace Guia_9
         {
             if (BtnBuscar.Enabled)
             {
-                BtnBuscar.ForeColor = MaterialColors.Blue500;
-                BtnBuscar.FlatAppearance.BorderColor = MaterialColors.Blue500;
-                BtnBuscar.BackColor = Color.White; ;
+                BtnBuscar.ForeColor = PaletaColores.Blue50;
+                BtnBuscar.BackColor = PaletaColores.Blue450;
             }
             else
             {
-                BtnBuscar.ForeColor = MaterialColors.Grey500;
-                BtnBuscar.FlatAppearance.BorderColor = MaterialColors.Grey500;
-                BtnBuscar.BackColor = MaterialColors.Grey50;
+                BtnBuscar.ForeColor = PaletaColores.Grey500;
+                BtnBuscar.BackColor = PaletaColores.Grey50;
             }
         }
 
@@ -284,7 +238,7 @@ namespace Guia_9
             BackgroundWorker worker = sender as BackgroundWorker;
             for (int i = 0; i < 100; i++)
             {
-                Thread.Sleep(5);
+                Thread.Sleep(2);
                 worker.ReportProgress(i);
             }
         }
@@ -296,18 +250,96 @@ namespace Guia_9
 
         private void BackWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
-            BuscarPorDni();
+            string dni = TxtDni.Text;
+            string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
+            //BuscarPorDni();
+            ObtenerPersonas(consulta);
+            DesactivarEditElim();
             BtnBuscar.Enabled = true;
             Progres.Visible = false;
 
          
         }
 
+        private void DesactivarEditElim()
+        {
+            if (DGV.Rows.Count > 0)
+            {
+                BtnEliminar.Enabled = true;
+                BtnEditar.Enabled = true;
+            }
+            else
+            {
+                BtnEliminar.Enabled = false;
+                BtnEditar.Enabled = false;
+            }
+        }
+
         private void FormConsulta_Activated(object sender, EventArgs e)
         {
-            ObtenerPersonas();
+            string consulta = "SELECT * FROM personas;";
 
+            ObtenerPersonas(consulta);
+            DesactivarEditElim();
+
+        }
+
+        private void BtnVerTodos_Click(object sender, EventArgs e)
+        {
+            string consulta = "SELECT * FROM personas;";
+            ObtenerPersonas(consulta);
+            DesactivarEditElim();
+
+        }
+
+        private void DGV_SelectionChanged(object sender, EventArgs e)
+        {
+            BtnEditar.Enabled = true;
+            BtnEliminar.Enabled = true;
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test: " + DGV.CurrentRow.Cells[0].Value);
+           
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            string id = DGV.CurrentRow.Cells[0].Value.ToString();
+            DialogResult dr = MessageBox.Show("Estas seguro que quieres eliminar el registro?", "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                ElimarResgistro(id);
+                OnActivated(null);
+            }
+        }
+
+        private void ElimarResgistro(string id)
+        {
+        
+            try
+            {
+                AccesoDB.ConectarDB();
+
+                string consulta = $"DELETE FROM personas WHERE id = {id};";
+
+                int res = AccesoDB.Eliminar(consulta);
+
+                if (res > 0)
+                {
+                    MessageBox.Show("Eliminacion Correcta", "Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (OleDbException ex)
+            {
+                MessageBox.Show(ex.Message, "Error en base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                AccesoDB.CerrarDB();
+            }
         }
     }
 }

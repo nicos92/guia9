@@ -36,8 +36,8 @@ namespace Guia_9
 
             AbrirFormularioMDI(btntype);
             DesactivarBtn(btn.GetType());
-            btn.BackColor = MaterialColors.Blue500;
-            btn.ForeColor = MaterialColors.Blue50;
+            btn.BackColor = PaletaColores.Blue500;
+            btn.ForeColor = PaletaColores.Blue50;
         }
 
         private void DesactivarBtn(Type btntype)
@@ -46,8 +46,8 @@ namespace Guia_9
             {
                 if (btn.GetType() == btntype)
                 {
-                    btn.BackColor = MaterialColors.Blue50;
-                    btn.ForeColor = MaterialColors.Blue500;
+                    btn.BackColor = PaletaColores.Blue50;
+                    btn.ForeColor = PaletaColores.Blue500;
                 }
             }
         }
