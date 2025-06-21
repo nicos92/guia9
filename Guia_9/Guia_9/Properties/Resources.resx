@@ -118,43 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="user-magnifying-glass 32 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-magnifying-glass 32 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="user-plus 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-plus 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="trash-can 24 red50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trash-can 24 red50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="users" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user-pen 24 yellow50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-pen 24 yellow50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user-magnifying-glass 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-magnifying-glass 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user-plus 32 blue450" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-plus 32 blue450.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user-pen 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-pen 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user-magnifying-glass 32 blue450" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-magnifying-glass 32 blue450.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user-plus 32 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user-plus 32 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user-magnifying-glass 24 blue450" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-magnifying-glass 24 blue450.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="user-magnifying-glass 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-magnifying-glass 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user-magnifying-glass 32 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-magnifying-glass 32 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="house-user 32 blueA200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\house-user 32 blueA200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trash-can 24 red50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trash-can 24 red50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user-pen 24 yellow50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-pen 24 yellow50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="house-user 32 blueA400" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\house-user 32 blueA400.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user-magnifying-glass 32 blue450" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-magnifying-glass 32 blue450.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user-pen 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-pen 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user-plus 32 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-plus 32 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="house-user 32 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\house-user 32 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="house-user 32 blueA300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\house-user 32 blueA300.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user-plus 32 blue450" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user-plus 32 blue450.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="trash-can 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash-can 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="users" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="users 24 blue50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\users 24 blue50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="house-user 32 blueA100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\house-user 32 blueA100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

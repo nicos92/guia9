@@ -63,6 +63,56 @@ namespace Guia_9.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap house_user_32_blue50 {
+            get {
+                object obj = ResourceManager.GetObject("house-user 32 blue50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap house_user_32_blueA100 {
+            get {
+                object obj = ResourceManager.GetObject("house-user 32 blueA100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap house_user_32_blueA200 {
+            get {
+                object obj = ResourceManager.GetObject("house-user 32 blueA200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap house_user_32_blueA300 {
+            get {
+                object obj = ResourceManager.GetObject("house-user 32 blueA300", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap house_user_32_blueA400 {
+            get {
+                object obj = ResourceManager.GetObject("house-user 32 blueA400", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trash_can_24_blue50 {
             get {
                 object obj = ResourceManager.GetObject("trash-can 24 blue50", resourceCulture);

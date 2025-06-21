@@ -33,6 +33,7 @@
             this.TableLayoutPaneltop = new System.Windows.Forms.TableLayoutPanel();
             this.BtnConsulta = new System.Windows.Forms.Button();
             this.BtnIngreso = new System.Windows.Forms.Button();
+            this.BtnHome = new System.Windows.Forms.Button();
             this.PanelTop.SuspendLayout();
             this.TableLayoutPaneltop.SuspendLayout();
             this.SuspendLayout();
@@ -49,22 +50,24 @@
             // 
             // TableLayoutPaneltop
             // 
-            this.TableLayoutPaneltop.ColumnCount = 2;
-            this.TableLayoutPaneltop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPaneltop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPaneltop.ColumnCount = 3;
+            this.TableLayoutPaneltop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.TableLayoutPaneltop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
+            this.TableLayoutPaneltop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
             this.TableLayoutPaneltop.Controls.Add(this.BtnConsulta, 1, 0);
             this.TableLayoutPaneltop.Controls.Add(this.BtnIngreso, 0, 0);
+            this.TableLayoutPaneltop.Controls.Add(this.BtnHome, 0, 0);
             this.TableLayoutPaneltop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPaneltop.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPaneltop.Name = "TableLayoutPaneltop";
             this.TableLayoutPaneltop.RowCount = 1;
-            this.TableLayoutPaneltop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPaneltop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPaneltop.Size = new System.Drawing.Size(784, 64);
             this.TableLayoutPaneltop.TabIndex = 0;
             // 
             // BtnConsulta
             // 
-            this.BtnConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            this.BtnConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.BtnConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnConsulta.FlatAppearance.BorderSize = 0;
             this.BtnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
@@ -73,10 +76,10 @@
             this.BtnConsulta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.BtnConsulta.Image = global::Guia_9.Properties.Resources.user_magnifying_glass_32_blue50;
-            this.BtnConsulta.Location = new System.Drawing.Point(392, 0);
-            this.BtnConsulta.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnConsulta.Location = new System.Drawing.Point(435, 0);
+            this.BtnConsulta.Margin = new System.Windows.Forms.Padding(0, 0, 1, 2);
             this.BtnConsulta.Name = "BtnConsulta";
-            this.BtnConsulta.Size = new System.Drawing.Size(392, 64);
+            this.BtnConsulta.Size = new System.Drawing.Size(348, 62);
             this.BtnConsulta.TabIndex = 1;
             this.BtnConsulta.Text = "CONSULTA";
             this.BtnConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -86,7 +89,7 @@
             // 
             // BtnIngreso
             // 
-            this.BtnIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            this.BtnIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.BtnIngreso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnIngreso.FlatAppearance.BorderSize = 0;
             this.BtnIngreso.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
@@ -95,16 +98,37 @@
             this.BtnIngreso.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.BtnIngreso.Image = global::Guia_9.Properties.Resources.user_plus_32_blue50;
-            this.BtnIngreso.Location = new System.Drawing.Point(0, 0);
-            this.BtnIngreso.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnIngreso.Location = new System.Drawing.Point(87, 0);
+            this.BtnIngreso.Margin = new System.Windows.Forms.Padding(0, 0, 1, 2);
             this.BtnIngreso.Name = "BtnIngreso";
-            this.BtnIngreso.Size = new System.Drawing.Size(392, 64);
+            this.BtnIngreso.Size = new System.Drawing.Size(347, 62);
             this.BtnIngreso.TabIndex = 0;
             this.BtnIngreso.Text = "INGRESO";
             this.BtnIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnIngreso.UseVisualStyleBackColor = false;
             this.BtnIngreso.Click += new System.EventHandler(this.BtnForms);
+            // 
+            // BtnHome
+            // 
+            this.BtnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.BtnHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnHome.FlatAppearance.BorderSize = 0;
+            this.BtnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
+            this.BtnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnHome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.BtnHome.Image = global::Guia_9.Properties.Resources.house_user_32_blueA200;
+            this.BtnHome.Location = new System.Drawing.Point(0, 0);
+            this.BtnHome.Margin = new System.Windows.Forms.Padding(0, 0, 1, 2);
+            this.BtnHome.Name = "BtnHome";
+            this.BtnHome.Size = new System.Drawing.Size(86, 62);
+            this.BtnHome.TabIndex = 2;
+            this.BtnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnHome.UseVisualStyleBackColor = false;
+            this.BtnHome.Click += new System.EventHandler(this.BtnForms);
             // 
             // FormPrincipal
             // 
@@ -134,6 +158,7 @@
         private System.Windows.Forms.TableLayoutPanel TableLayoutPaneltop;
         private System.Windows.Forms.Button BtnConsulta;
         private System.Windows.Forms.Button BtnIngreso;
+        private System.Windows.Forms.Button BtnHome;
     }
 }
 

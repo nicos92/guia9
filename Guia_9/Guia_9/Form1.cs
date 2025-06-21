@@ -23,6 +23,7 @@ namespace Guia_9
         {
             BtnIngreso.Tag = typeof(FormIngreso);
             BtnConsulta.Tag = typeof(FormConsulta);
+            BtnHome.Tag = typeof(FormInicio);
 
             FormInicio nuevoForm = new FormInicio() ;
             nuevoForm.MdiParent = this;
@@ -67,6 +68,11 @@ namespace Guia_9
             nuevoForm.MdiParent = this;
             nuevoForm.Dock = DockStyle.Fill;
             nuevoForm.Show();
+        }
+
+        private void BtnHome_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

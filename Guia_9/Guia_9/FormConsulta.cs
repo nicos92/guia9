@@ -306,8 +306,16 @@ namespace Guia_9
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            string id = DGV.CurrentRow.Cells[0].Value.ToString();
-            DialogResult dr = MessageBox.Show("Estas seguro que quieres eliminar el registro?", "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DataGridViewCellCollection datos = DGV.CurrentRow.Cells;
+            string id = datos[0].Value.ToString();
+            string legajo = datos[1].Value.ToString();
+            string dni = datos[2].Value.ToString();
+
+            string apellido = datos[3].Value.ToString();
+            string nombre = datos[4].Value.ToString();
+
+            string msj = $"Legajo: {legajo}\nDNI: {dni}\nApellido: {apellido}\nNombre: {nombre}";
+            DialogResult dr = MessageBox.Show("Estas seguro que quieres eliminar el registro?\n" + msj, "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
                 ElimarResgistro(id);

@@ -142,5 +142,10 @@ namespace Guia_9
                 }
             }
         }
+
+        private void FormIngreso_Activated(object sender, EventArgs e)
+        {
+            TxtNombre.Focus();
+        }
     }
 }
