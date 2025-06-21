@@ -22,10 +22,11 @@ namespace FuncionesDB
         {
             ParaDB.Orden = new OleDbCommand(consulta, ParaDB.ConexionConDB);
             ParaDB.lector = ParaDB.Orden.ExecuteReader();
+            
             return ParaDB.lector;
         }
 
-        public static int Insertar(string consulta)
+        public static int DBExecuteNonQuery(string consulta)
         {
 
             ParaDB.Orden = new OleDbCommand(consulta, ParaDB.ConexionConDB);
@@ -38,11 +39,6 @@ namespace FuncionesDB
             ParaDB.ConexionConDB.Close();
         }
 
-        internal static int Eliminar(string consulta)
-        {
-            ParaDB.Orden = new OleDbCommand(consulta, ParaDB.ConexionConDB);
-
-            return ParaDB.Orden.ExecuteNonQuery();
-        }
+    
     }
 }

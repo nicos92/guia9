@@ -262,7 +262,7 @@ namespace Guia_9
             BtnBuscar.Enabled = true;
             Progres.Visible = false;
 
-         
+
         }
 
         private void DesactivarEditElim()
@@ -304,8 +304,25 @@ namespace Guia_9
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Test: " + DGV.CurrentRow.Cells[0].Value);
-           
+            DataGridViewCellCollection datos = DGV.CurrentRow.Cells;
+            Persona persona = new Persona()
+            {
+                Id = Convert.ToInt32(datos[0].Value),
+                Legajo = Convert.ToInt32(datos[1].Value),
+                Dni = Convert.ToInt32(datos[2].Value),
+                Apellido = datos[3].Value.ToString(),
+                Nombre = datos[4].Value.ToString(),
+                Telefono = datos[5].Value.ToString(),
+                Telefono2 = datos[6].Value.ToString(),
+                Direccion = datos[7].Value.ToString(),
+                MensualQuincenal = datos[8].Value.ToString(),
+                Baja = datos[9].Value.ToString()
+
+            };
+            
+            FormModifica fm = new FormModifica(persona,BtnVerTodos);
+            fm.ShowDialog();
+
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -329,14 +346,14 @@ namespace Guia_9
 
         private void ElimarResgistro(string id)
         {
-        
+
             try
             {
                 AccesoDB.ConectarDB();
 
                 string consulta = $"DELETE FROM personas WHERE id = {id};";
 
-                int res = AccesoDB.Eliminar(consulta);
+                int res = AccesoDB.DBExecuteNonQuery(consulta);
 
                 if (res > 0)
                 {

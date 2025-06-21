@@ -145,7 +145,7 @@ namespace Guia_9
                 consulta = $"INSERT INTO personas (legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja) VALUES ({legajo},{TxtDni.Text},'{TxtApellido.Text}','{TxtNombre.Text}','{TxtTelefono.Text}','{TxtDireccion.Text}','{TxtTelefono2.Text}', {menquin}, {false});";
 
 
-                int res = AccesoDB.Insertar(consulta);
+                int res = AccesoDB.DBExecuteNonQuery(consulta);
 
                 if (res > 0)
                 {
