@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDB.cs" />
+    <Compile Include="BackWork.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,17 +74,18 @@
     <Compile Include="FormInicio.Designer.cs">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormModifica.cs">
+    <Compile Include="FormEdicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormModifica.Designer.cs">
-      <DependentUpon>FormModifica.cs</DependentUpon>
+    <Compile Include="FormEdicion.Designer.cs">
+      <DependentUpon>FormEdicion.cs</DependentUpon>
     </Compile>
     <Compile Include="PaletaColores.cs" />
     <Compile Include="ParaDB.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Validaciones.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -95,8 +99,8 @@
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormModifica.resx">
-      <DependentUpon>FormModifica.cs</DependentUpon>
+    <EmbeddedResource Include="FormEdicion.resx">
+      <DependentUpon>FormEdicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

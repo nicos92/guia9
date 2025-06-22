@@ -18,9 +18,11 @@ namespace Guia_9
 {
     public partial class FormIngreso : Form
     {
+        private BackWork _myWork;
         public FormIngreso()
         {
             InitializeComponent();
+            _myWork = new BackWork(Progres, InsertarPersona);
         }
 
         private void TxtNumeros_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,17 +60,22 @@ namespace Guia_9
 
         private void Txt_TextChanged(object sender, EventArgs e)
         {
-            bool nom = TxtNombre.Text.Length > 2;
-            bool ape = TxtApellido.Text.Length > 2;
-            bool dni = TxtDni.Text.Length == 8;
-            bool tel = TxtTelefono.Text.Length > 7;
-            bool tel2 = TxtTelefono2.Text.Length > 7;
-
-            bool dire = TxtDireccion.Text.Length > 3;
-
-            BtnIngresar.Enabled = nom && ape && dni && tel && tel2 && dire;
-            SacarDobleEspacio();
+            bool nom, ape, dni, tel, tel2, dire;
+            
+            HabilitarBtn(out nom, out ape, out dni, out tel, out tel2, out dire);
+            Util.SacarDobleEspacio(TxtDireccion);
             RevisionIngreso(nom, ape, dni, tel, tel2, dire);
+        }
+
+        private void HabilitarBtn(out bool nom, out bool ape, out bool dni, out bool tel, out bool tel2, out bool dire)
+        {
+            nom = TxtNombre.Text.Length > 2;
+            ape = TxtApellido.Text.Length > 2;
+            dni = TxtDni.Text.Length == 8;
+            tel = TxtTelefono.Text.Length > 7;
+            tel2 = TxtTelefono2.Text.Length > 7;
+            dire = TxtDireccion.Text.Length > 3;
+            BtnIngresar.Enabled = nom && ape && dni && tel && tel2 && dire;
         }
 
         private void RevisionIngreso(bool nom, bool ape, bool dni, bool tel, bool tel2, bool dire)
@@ -122,6 +129,13 @@ namespace Guia_9
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            BtnIngresar.Enabled = false;
+            Progres.Visible = true;
+            _myWork.RunWorkerAsync();
+        }
+
+        private void InsertarPersona()
+        {
             OleDbDataReader lector = null;
             int legajo = 0;
             bool menquin = RBtnMensual.Checked ? true : false;
@@ -157,12 +171,14 @@ namespace Guia_9
             catch (OleDbException ex)
             {
                 string error = ex.Message.Contains("valores duplicados") ? "DNI duplicado" : ex.Message;
-                MessageBox.Show(error, "Error en la base de datos",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(error, "Error en la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 lector.Close();
                 AccesoDB.CerrarDB();
+                Progres.Visible = false;
+
                 TxtNombre.Focus();
             }
         }

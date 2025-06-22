@@ -18,14 +18,19 @@ namespace Guia_9
 {
     public partial class FormConsulta : Form
     {
+        
+        private const string CONSULTA = "SELECT * FROM personas";
+        private string _consulta = "";
 
         public FormConsulta()
         {
             InitializeComponent();
+            _primeravez = 0;
         }
 
         // 1. Usar DataSource con BindingList (mejor rendimiento que List)
         private BindingList<Persona> _personasBindingList;
+        private int _primeravez;
 
         // 2. Configuración inicial del DataGridView
         private void ConfigurarDGV()
@@ -150,16 +155,16 @@ namespace Guia_9
         private void FormConsulta_Load(object sender, EventArgs e)
         {
             ConfigurarDGV();
-            EP.SetError(TxtDni, "Para buscar por dni ingrese un numero");
+            EP.SetError(TxtDni, "Para buscar por dni al menos ingrese un numero");
         }
 
-        private void ObtenerPersonas(string consulta)
+        private void ObtenerPersonas()
         {
             OleDbDataReader lector = null;
             try
             {
                 AccesoDB.ConectarDB();
-                lector = AccesoDB.LecturaDB(consulta);
+                lector = AccesoDB.LecturaDB(_consulta);
                 List<Persona> personas = new List<Persona>();
                 while (lector.Read())
                 {
@@ -201,9 +206,10 @@ namespace Guia_9
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            BtnBuscar.Enabled = false;
-            Progres.Visible = true;
-            BackWork.RunWorkerAsync();
+
+            DesactivarBotones(false);
+            
+            BackWorker.RunWorkerAsync(sender );
 
         }
 
@@ -218,7 +224,7 @@ namespace Guia_9
             else
             {
                 BtnBuscar.Enabled = false;
-                EP.SetError(TxtDni, "Para buscar por dni ingrese un numero");
+                EP.SetError(TxtDni, "Para buscar por dni al menos ingrese un numero");
 
             }
         }
@@ -239,6 +245,16 @@ namespace Guia_9
 
         private void BackWork_DoWork(object sender, DoWorkEventArgs e)
         {
+            Button btn =  e.Argument as Button;
+            if (btn.Tag.ToString() == "0")
+            {
+                _consulta = CONSULTA;
+            }
+            if (btn.Tag.ToString() == "1")
+            {
+                _consulta = CONSULTA + $" WHERE dni LIKE '{TxtDni.Text}%';";
+            }
+
             BackgroundWorker worker = sender as BackgroundWorker;
             for (int i = 0; i < 100; i++)
             {
@@ -254,13 +270,13 @@ namespace Guia_9
 
         private void BackWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            
             string dni = TxtDni.Text;
-            string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
+            //string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
             //BuscarPorDni();
-            ObtenerPersonas(consulta);
+            ObtenerPersonas();
             DesactivarEditElim();
-            BtnBuscar.Enabled = true;
-            Progres.Visible = false;
+            DesactivarBotones(true);
 
 
         }
@@ -281,19 +297,30 @@ namespace Guia_9
 
         private void FormConsulta_Activated(object sender, EventArgs e)
         {
-            string consulta = "SELECT * FROM personas;";
-
-            ObtenerPersonas(consulta);
+            if (_primeravez == 0)
+            {
+                _primeravez = 1;
+            DesactivarBotones(false);
+            BackWorker.RunWorkerAsync(BtnVerTodos);
+            //ObtenerPersonas(CONSULTA);
             DesactivarEditElim();
-
+            }
         }
 
         private void BtnVerTodos_Click(object sender, EventArgs e)
         {
-            string consulta = "SELECT * FROM personas;";
-            ObtenerPersonas(consulta);
-            DesactivarEditElim();
-
+            DesactivarBotones(false);
+            BackWorker.RunWorkerAsync(sender);
+            //ObtenerPersonas(CONSULTA);
+            //DesactivarEditElim();
+        }
+        private void DesactivarBotones(bool bol)
+        {
+            BtnBuscar.Enabled = bol;
+            BtnVerTodos.Enabled = bol;
+            BtnEditar.Enabled = bol;
+            BtnEliminar.Enabled = bol;
+            Progres.Visible = !bol;
         }
 
         private void DGV_SelectionChanged(object sender, EventArgs e)
@@ -320,7 +347,7 @@ namespace Guia_9
 
             };
             
-            FormModifica fm = new FormModifica(persona,BtnVerTodos);
+            FormEdicion fm = new FormEdicion(persona,BtnVerTodos);
             fm.ShowDialog();
 
         }
@@ -340,26 +367,21 @@ namespace Guia_9
             if (dr == DialogResult.Yes)
             {
                 ElimarResgistro(id);
-                OnActivated(null);
+                BtnVerTodos.PerformClick();
             }
         }
 
         private void ElimarResgistro(string id)
         {
-
             try
             {
                 AccesoDB.ConectarDB();
-
                 string consulta = $"DELETE FROM personas WHERE id = {id};";
-
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
-
                 if (res > 0)
                 {
                     MessageBox.Show("Eliminacion Correcta", "Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
             catch (OleDbException ex)
             {

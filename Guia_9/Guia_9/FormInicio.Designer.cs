@@ -49,7 +49,7 @@
             this.LblCant.AutoSize = true;
             this.LblCant.BackColor = System.Drawing.Color.Transparent;
             this.LblCant.Font = new System.Drawing.Font("Segoe UI", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCant.Location = new System.Drawing.Point(351, 30);
+            this.LblCant.Location = new System.Drawing.Point(351, 163);
             this.LblCant.Name = "LblCant";
             this.LblCant.Size = new System.Drawing.Size(275, 128);
             this.LblCant.TabIndex = 1;
@@ -62,7 +62,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(361, 143);
+            this.label1.Location = new System.Drawing.Point(351, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(328, 130);
             this.label1.TabIndex = 2;
@@ -83,6 +83,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormInicio";
             this.Text = "FormInicio";
+            this.Activated += new System.EventHandler(this.FormInicio_Activated);
             this.Load += new System.EventHandler(this.FormInicio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

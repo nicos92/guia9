@@ -21,11 +21,16 @@ namespace Guia_9
 
         private void FormInicio_Load(object sender, EventArgs e)
         {
+            ObtenerPersonas();
+        }
+
+        private void ObtenerPersonas()
+        {
             OleDbDataReader lector = null;
             int cant = 0;
             try
             {
-          
+
                 AccesoDB.ConectarDB();
                 string consulta = $"SELECT COUNT(id) FROM personas;";
                 lector = AccesoDB.LecturaDB(consulta);
@@ -55,6 +60,11 @@ namespace Guia_9
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormInicio_Activated(object sender, EventArgs e)
+        {
+            ObtenerPersonas();
         }
     }
 }
