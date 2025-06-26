@@ -131,6 +131,7 @@ namespace Guia_9
         {
             BtnIngresar.Enabled = false;
             Progres.Visible = true;
+            this.Enabled = false;
             _myWork.RunWorkerAsync();
         }
 
@@ -179,6 +180,7 @@ namespace Guia_9
                 AccesoDB.CerrarDB();
                 Progres.Visible = false;
 
+                this.Enabled = true;
                 TxtNombre.Focus();
             }
         }

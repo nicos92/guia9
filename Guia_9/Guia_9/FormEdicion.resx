@@ -121,6 +121,52 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAGBgAAAEAIACICQAAFgAAACgAAAAYAAAAMAAAAAEAIAAAAAAAAAkAAMMOAADDDgAAAAAAAAAA
+        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wDo/P9X6P3/mej9/5no/f+Z6P3/mej9/5no/f+Z6P3/mej9/5no/f+Z6P3/mej9
+        /5nb//8H6Pz/Y+j9/2/p//8v////Av///wD///8A////AP///wD///8A////AP///wDn/f/15/3//+f9
+        ///n/f//5/3//+f9///n/f//5/3//+f9///n/f//5/3//+f9///n//8V6P7/r+f9///n/f//5/3/0eP/
+        /xv///8A////AP///wD///8A////AP///wDn/f/m5/3/8ub//zTm//8z5v//M+b//zPm//8z5v//M+b/
+        /zPm//8z5v//M+b//zPo//8L5v3/cOf9///n/f//5/3//+b9/9rj//8b////AP///wD///8A////AP//
+        /wDn/v+s5/3//+b//z3///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A5P//Juf9
+        //zn/f//5/3//+f9///m/f/a4///G////wD///8A////AP///wDp+/9F5/3//+f9/87m//8K////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AOf8/1/n/f/95/3//+f9///n/f//5v3/2uP/
+        /xv///8A////AP///wD///8A5v3/puf9///n/P/G6v//Jf///wD///8A////AP///wD///8A////AP//
+        /wDn//8/6P7/uev//xnn/P9f5/3//ef9///n/f//5/3//+b9/9rj//8b////AP///wD///8A4///Cej+
+        /6/n/f//5/3//Of8/8Pn/f+e6P3/mej9/5no/f+Z5/3/ouf9/9Hn/f//5/3//uj9/23///8A5/z/X+f9
+        //3n/f//5/3//+f9//fo+/9C////AP///wD///8A////AP///wLm/P9d5/3/zuf9///n/f//5/3//+f9
+        ///n/f//5/3//+f9//vm/v+75/v/Qf///wD///8A////AOf8/1/n/f/95/3/9+b7/0jk//8m5/z/wOP/
+        /xv///8A////AP///wD///8A////AOT//xPo//8t5v//M+b//zPm//8z5///Kur//wz///8A////AP//
+        /wD///8A////AP///wDn/P9e5vv/SOT//ybn/f/l5/3//+f8/8f///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A6P//C+f9
+        /+Ln/f//5/3//+f9/+f///8A////AP///wD///8A////AOn//xfn/f+T5/3/4+f9//nn/f/Y6P3/euP/
+        /wn///8A////AP///wD///8A////AP///wD///8A////AOf8/17n/f/65/3/9ej8/0z///8A////AP//
+        /wD///8A6v//JOf9/+Xn/f//5/3/9uf9/9nn/f/75/3//+f8/8jq//8M////AP///wD///8A////AP//
+        /wD///8A////AP///wDr//8a5///Ff///wD///8A////AP///wD///8B5/z/yOf9///n/f9/////BP//
+        /wDt//8O5/3/p+f9///n/f+T////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wDm//8z5/3//+j+/7n///8A////AP///wD///8A3///COf9/+Ln/f/14///Cf//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wDn/P9e5/3//+f9
+        /3X///8A////AP///wD///8A////AOf9/6fn/f//5///K////wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wDn/P9U5/3//+b9/4X///8A////AP///wD///8A////AOf+
+        /7fn/f//5///IP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wDp//8X5/3/+uj9/+Tt//8O////AP///wD///8A5///Kuf9//rn/f/c////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A5/3/i+f9///n/f/X5/z/Yef7
+        /0Do/f9v5/3/6+f9///n/P9W////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////BOj9/5nn/f/+5/3//+f9///n/f//5/3/+Oj9/27///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wDk//8w5/3/fuf9/5Tn/f905v//Hv///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AAAAfwAAAD8AAAAfAB/4DwAP/AcAh/ADAIAB
+        AwDAA4AA+A/AAP//4AD4D/AA8Af5AOCH/wDjw/8A4+P/AOPj/wDhx/8A8Af/APAP/wD8H/8A////AP//
+        /wA=
+</value>
+  </data>
   <data name="Ep.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAGBgAAAEAIACICQAAFgAAACgAAAAYAAAAMAAAAAEAIAAAAAAAYAkAAAAAAAAAAAAAAAAAAAAA
@@ -167,4 +213,7 @@
         AAA=
 </value>
   </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>82, 17</value>
+  </metadata>
 </root>

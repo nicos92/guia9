@@ -28,14 +28,14 @@ namespace Guia_9
             _primeravez = 0;
         }
 
-        // 1. Usar DataSource con BindingList (mejor rendimiento que List)
+        
         private BindingList<Persona> _personasBindingList;
         private int _primeravez;
 
-        // 2. Configuración inicial del DataGridView
+      
         private void ConfigurarDGV()
         {
-            // Desactivar características que impactan el rendimiento
+         
             DGV.AutoGenerateColumns = false;
             DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
@@ -44,10 +44,10 @@ namespace Guia_9
             DGV.ReadOnly = true;
             DGV.MultiSelect = false;
 
-            // Limpiar columnas existentes
+     
             DGV.Columns.Clear();
 
-            // Agregar solo las columnas necesarias
+  
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colId",
@@ -121,36 +121,25 @@ namespace Guia_9
             });
         }
 
-        // 3. Cargar datos de forma eficiente
+
         private void CargarDatos(List<Persona> datosCompletos)
         {
-            // Usar VirtualMode para grandes conjuntos de datos
+
             DGV.VirtualMode = true;
 
-            // Configurar el tamaño del buffer
+
             _personasBindingList = new BindingList<Persona>(datosCompletos);
 
-            // Asignar el origen de datos
             var bindingSource = new BindingSource();
             bindingSource.DataSource = _personasBindingList;
             DGV.DataSource = bindingSource;
 
-            // Opcional: Paginación para mejor rendimiento
-            ConfigurarPaginas(bindingSource);
+
+  
         }
 
-        // 4. Implementar paginación (opcional pero recomendado)
-        private void ConfigurarPaginas(BindingSource bindingSource)
-        {
-            // Ejemplo básico de paginación
-            int pageSize = 100;
-            int currentPage = 0;
 
-            bindingSource.DataSource = _personasBindingList
-                .Skip(currentPage * pageSize)
-                .Take(pageSize)
-                .ToList();
-        }
+
 
         private void FormConsulta_Load(object sender, EventArgs e)
         {
@@ -200,13 +189,14 @@ namespace Guia_9
 
         private void TxtDni_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validaciones.Numeros(ref e);
+            //Validaciones.Numeros(ref e);
+            Validaciones.LetrasNumeros(ref e);
             Validaciones.Borrar(ref e);
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-
+           
             DesactivarBotones(false);
             
             BackWorker.RunWorkerAsync(sender );
@@ -224,7 +214,7 @@ namespace Guia_9
             else
             {
                 BtnBuscar.Enabled = false;
-                EP.SetError(TxtDni, "Para buscar por dni al menos ingrese un numero");
+                EP.SetError(TxtDni, "Para buscar por dni, apellido ó nombre ingrese una letra o un número");
 
             }
         }
@@ -252,7 +242,7 @@ namespace Guia_9
             }
             if (btn.Tag.ToString() == "1")
             {
-                _consulta = CONSULTA + $" WHERE dni LIKE '{TxtDni.Text}%';";
+                _consulta = CONSULTA + $" WHERE dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%';";
             }
 
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -277,6 +267,7 @@ namespace Guia_9
             ObtenerPersonas();
             DesactivarEditElim();
             DesactivarBotones(true);
+            TxtDni.Focus();
 
 
         }

@@ -56,6 +56,7 @@
             this.LblId = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ChBBaja = new System.Windows.Forms.CheckBox();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Ep)).BeginInit();
             this.PanelProgres.SuspendLayout();
             this.PanelBajo.SuspendLayout();
@@ -132,7 +133,9 @@
             this.BtnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnEditar.UseVisualStyleBackColor = false;
+            this.BtnEditar.EnabledChanged += new System.EventHandler(this.BtnEditar_EnabledChanged);
             this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            this.BtnEditar.MouseHover += new System.EventHandler(this.BtnEditar_MouseHover);
             // 
             // PanelPrincipal
             // 
@@ -399,6 +402,7 @@
             this.Controls.Add(this.PanelProgres);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(600, 440);
             this.MinimizeBox = false;
@@ -449,5 +453,6 @@
         private System.Windows.Forms.Label LblId;
         private System.Windows.Forms.Button BtnEditar;
         private System.Windows.Forms.CheckBox ChBBaja;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }

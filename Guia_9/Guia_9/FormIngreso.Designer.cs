@@ -49,9 +49,9 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.PanelBajo = new System.Windows.Forms.Panel();
             this.TableLayoutPanelBajo = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnIngresar = new System.Windows.Forms.Button();
             this.PanelProgres = new System.Windows.Forms.Panel();
             this.Progres = new System.Windows.Forms.ProgressBar();
-            this.BtnIngresar = new System.Windows.Forms.Button();
             this.Ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.PanelPrincipal.SuspendLayout();
             this.TLPForm.SuspendLayout();
@@ -239,7 +239,7 @@
             this.GBModalidadPago.Location = new System.Drawing.Point(143, 262);
             this.GBModalidadPago.Name = "GBModalidadPago";
             this.GBModalidadPago.Size = new System.Drawing.Size(494, 39);
-            this.GBModalidadPago.TabIndex = 6;
+            this.GBModalidadPago.TabIndex = 13;
             this.GBModalidadPago.TabStop = false;
             this.GBModalidadPago.Text = "Modalidad de pago";
             // 
@@ -299,26 +299,6 @@
             this.TableLayoutPanelBajo.Size = new System.Drawing.Size(780, 64);
             this.TableLayoutPanelBajo.TabIndex = 0;
             // 
-            // PanelProgres
-            // 
-            this.PanelProgres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
-            this.PanelProgres.Controls.Add(this.Progres);
-            this.PanelProgres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelProgres.Location = new System.Drawing.Point(0, 0);
-            this.PanelProgres.Name = "PanelProgres";
-            this.PanelProgres.Size = new System.Drawing.Size(780, 23);
-            this.PanelProgres.TabIndex = 2;
-            // 
-            // Progres
-            // 
-            this.Progres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
-            this.Progres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Progres.Location = new System.Drawing.Point(0, 0);
-            this.Progres.Name = "Progres";
-            this.Progres.Size = new System.Drawing.Size(780, 23);
-            this.Progres.TabIndex = 1;
-            this.Progres.Visible = false;
-            // 
             // BtnIngresar
             // 
             this.BtnIngresar.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -341,6 +321,26 @@
             this.BtnIngresar.UseVisualStyleBackColor = false;
             this.BtnIngresar.EnabledChanged += new System.EventHandler(this.BtnIngresar_EnabledChanged);
             this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
+            // 
+            // PanelProgres
+            // 
+            this.PanelProgres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
+            this.PanelProgres.Controls.Add(this.Progres);
+            this.PanelProgres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelProgres.Location = new System.Drawing.Point(0, 0);
+            this.PanelProgres.Name = "PanelProgres";
+            this.PanelProgres.Size = new System.Drawing.Size(780, 23);
+            this.PanelProgres.TabIndex = 2;
+            // 
+            // Progres
+            // 
+            this.Progres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
+            this.Progres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Progres.Location = new System.Drawing.Point(0, 0);
+            this.Progres.Name = "Progres";
+            this.Progres.Size = new System.Drawing.Size(780, 23);
+            this.Progres.TabIndex = 1;
+            this.Progres.Visible = false;
             // 
             // Ep
             // 

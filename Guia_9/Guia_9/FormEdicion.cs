@@ -18,6 +18,7 @@ namespace Guia_9
         private BackWork _myWorker;
         private Persona _persona;
         private Button _form;
+        private bool _edicion = false;
         public FormEdicion()
         {
             InitializeComponent();
@@ -55,8 +56,9 @@ namespace Guia_9
       
         private void BtnEditar_Click(object sender, EventArgs e)
         {
+            // todo si el boton esta deshabilitado al pasar el mouse por encima  mostrar carlet de verificacion
             Progres.Visible = true;
-            BtnEditar.Enabled = false;
+            this.Enabled = false;
             _myWorker.RunWorkerAsync();
          
 
@@ -84,13 +86,19 @@ namespace Guia_9
                 string error = ex.Message.Contains("valores duplicados") ? "DNI duplicado" : ex.Message;
                 MessageBox.Show(error, "Error en la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            _edicion = true;
             BtnEditar.Enabled = true;
+            this.Enabled = true;
+
         }
 
         private void FormModifica_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (_edicion)
+            {
+
             _form.PerformClick();
+            }
         }
 
         private void Txt_TextChanged(object sender, EventArgs e)
@@ -163,6 +171,26 @@ namespace Guia_9
             Validaciones.LetrasNumeros(ref e);
             Validaciones.EspaciosBorrar(ref e);
             //Validaciones.EspPrincipio(ref e, TxtDireccion.Text);
+        }
+
+        private void BtnEditar_EnabledChanged(object sender, EventArgs e)
+        {
+            if (BtnEditar.Enabled)
+            {
+                ToolTip.SetToolTip(BtnEditar, "Haga click para confirmar la edicion");
+                
+                BtnEditar.BackColor = Colores.PaletaColores.Yellow500;
+
+            }
+            else
+            {
+                BtnEditar.BackColor = Colores.PaletaColores.Grey200;
+            }
+        }
+
+        private void BtnEditar_MouseHover(object sender, EventArgs e)
+        {
+           
         }
     }
 }
