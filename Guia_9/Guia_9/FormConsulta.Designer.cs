@@ -48,8 +48,8 @@
             this.PanelProgres = new System.Windows.Forms.Panel();
             this.PanelCartel = new System.Windows.Forms.Panel();
             this.TLPCartel = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.PanelTop.SuspendLayout();
             this.TLPTop.SuspendLayout();
             this.PanelBajo.SuspendLayout();
@@ -240,7 +240,7 @@
             // 
             this.DGV.AllowUserToAddRows = false;
             this.DGV.AllowUserToDeleteRows = false;
-            this.DGV.AllowUserToResizeColumns = false;
+            this.DGV.AllowUserToOrderColumns = true;
             this.DGV.AllowUserToResizeRows = false;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -251,6 +251,7 @@
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(738, 206);
             this.DGV.TabIndex = 0;
+            
             this.DGV.SelectionChanged += new System.EventHandler(this.DGV_SelectionChanged);
             // 
             // Progres
@@ -314,6 +315,15 @@
             this.TLPCartel.Size = new System.Drawing.Size(770, 23);
             this.TLPCartel.TabIndex = 0;
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(613, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 17);
+            this.label3.TabIndex = 1;
+            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -323,15 +333,6 @@
             this.label2.Size = new System.Drawing.Size(389, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Para editar o eliminar un registro seleccione una fila de la tabla";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(613, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 17);
-            this.label3.TabIndex = 1;
             // 
             // FormConsulta
             // 

@@ -19,7 +19,7 @@ namespace Guia_9
     public partial class FormConsulta : Form
     {
         
-        private const string CONSULTA = "SELECT * FROM personas";
+        private const string CONSULTA = "SELECT Id, legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja  FROM personas";
         private string _consulta = "";
 
         public FormConsulta()
@@ -130,12 +130,13 @@ namespace Guia_9
 
             _personasBindingList = new BindingList<Persona>(datosCompletos);
 
-            var bindingSource = new BindingSource();
+            BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = _personasBindingList;
-            DGV.DataSource = bindingSource;
+            //DGV.DataSource = bindingSource;
+            DGV.DataSource = _personasBindingList;
 
 
-  
+
         }
 
 
@@ -153,6 +154,7 @@ namespace Guia_9
             try
             {
                 AccesoDB.ConectarDB();
+                MessageBox.Show(_consulta);
                 lector = AccesoDB.LecturaDB(_consulta);
                 List<Persona> personas = new List<Persona>();
                 while (lector.Read())
@@ -176,9 +178,9 @@ namespace Guia_9
                 }
                 CargarDatos(personas);
             }
-            catch
+            catch( OleDbException ez)
             {
-                MessageBox.Show("Error al Abrir la base de datos");
+                MessageBox.Show("Error al consultar: \n" + ez.Message, "Error base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error  );
             }
             finally
             {
@@ -208,13 +210,11 @@ namespace Guia_9
 
             if (TxtDni.Text.Length > 0)
             {
-                BtnBuscar.Enabled = true;
                 EP.Clear();
             }
             else
             {
-                BtnBuscar.Enabled = false;
-                EP.SetError(TxtDni, "Para buscar por dni, apellido ó nombre ingrese una letra o un número");
+                EP.SetError(TxtDni, "Para obtener una mejor busqueda por dni, apellido ó nombre ingrese una letra o un número");
 
             }
         }
@@ -238,11 +238,11 @@ namespace Guia_9
             Button btn =  e.Argument as Button;
             if (btn.Tag.ToString() == "0")
             {
-                _consulta = CONSULTA;
+                _consulta = CONSULTA + " WHERE fecha_eliminacion IS NULL;";
             }
             if (btn.Tag.ToString() == "1")
             {
-                _consulta = CONSULTA + $" WHERE dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%';";
+                _consulta = CONSULTA + $" WHERE (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND fecha_eliminacion IS NULL AND baja = False;";
             }
 
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -292,7 +292,7 @@ namespace Guia_9
             {
                 _primeravez = 1;
             DesactivarBotones(false);
-            BackWorker.RunWorkerAsync(BtnVerTodos);
+            BackWorker.RunWorkerAsync(BtnBuscar);
             //ObtenerPersonas(CONSULTA);
             DesactivarEditElim();
             }
@@ -367,7 +367,7 @@ namespace Guia_9
             try
             {
                 AccesoDB.ConectarDB();
-                string consulta = $"DELETE FROM personas WHERE id = {id};";
+                string consulta = $"UPDATE personas SET fecha_eliminacion = Now() WHERE id = {id};";
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
                 if (res > 0)
                 {
@@ -383,5 +383,7 @@ namespace Guia_9
                 AccesoDB.CerrarDB();
             }
         }
+
+       
     }
 }

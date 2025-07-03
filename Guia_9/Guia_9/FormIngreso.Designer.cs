@@ -250,13 +250,13 @@
             this.RBtnQuincenal.Name = "RBtnQuincenal";
             this.RBtnQuincenal.Size = new System.Drawing.Size(86, 21);
             this.RBtnQuincenal.TabIndex = 1;
-            this.RBtnQuincenal.TabStop = true;
             this.RBtnQuincenal.Text = "Quincenal";
             this.RBtnQuincenal.UseVisualStyleBackColor = true;
             // 
             // RBtnMensual
             // 
             this.RBtnMensual.AutoSize = true;
+            this.RBtnMensual.Checked = true;
             this.RBtnMensual.Location = new System.Drawing.Point(138, 12);
             this.RBtnMensual.Name = "RBtnMensual";
             this.RBtnMensual.Size = new System.Drawing.Size(77, 21);

@@ -68,7 +68,7 @@ namespace Guia_9
         {
             try
             {
-                string consulta = $"UPDATE personas SET legajo = {_persona.Legajo}, dni = {TxtDni.Text}, apellido = '{TxtApellido.Text}', nombres = '{TxtNombre.Text}', telefono = '{TxtTelefono.Text}', direccion = '{TxtDireccion.Text}', telefono2 = '{TxtTelefono2.Text}', mensualquincenal = {RBtnMensual.Checked}, baja = {ChBBaja.Checked} WHERE id = {_persona.Id} ;";
+                string consulta = $"UPDATE personas SET legajo = {_persona.Legajo}, dni = {TxtDni.Text}, apellido = '{TxtApellido.Text}', nombres = '{TxtNombre.Text}', telefono = '{TxtTelefono.Text}', direccion = '{TxtDireccion.Text}', telefono2 = '{TxtTelefono2.Text}', mensualquincenal = {RBtnMensual.Checked}, baja = {ChBBaja.Checked}, fecha_modificacion = Now() WHERE id = {_persona.Id} ;";
 
 
                 AccesoDB.ConectarDB();
@@ -103,10 +103,11 @@ namespace Guia_9
 
         private void Txt_TextChanged(object sender, EventArgs e)
         {
+            TextBox txt = sender as TextBox;
             bool nom, ape, dni, tel, tel2, dire;
             
             HabilitarBtn(out nom, out ape, out dni, out tel, out tel2, out dire);
-            Util.SacarDobleEspacio(TxtDireccion);
+            Util.SacarDobleEspacio(txt);
             RevisionIngreso(nom, ape, dni, tel, tel2, dire);
         }
 
@@ -157,7 +158,7 @@ namespace Guia_9
         private void TxtLetas_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.Letras(ref e);
-            Validaciones.Borrar(ref e);
+            Validaciones.EspaciosBorrar(ref e);
         }
 
         private void TxtNumeros_KeyPress(object sender, KeyPressEventArgs e)
