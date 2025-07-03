@@ -122,10 +122,17 @@ namespace Guia_9
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            HabilitarBtns(false);
             BtnIngresar.Enabled = false;
-            Progres.Visible = true;
-            this.Enabled = false;
+
             _myWork.RunWorkerAsync();
+        }
+
+        private void HabilitarBtns(bool bol)
+        {
+            Progres.Visible = !bol;
+            PanelPrincipal.Enabled = bol;
+            PanelBajo.Enabled = bol;
         }
 
         private void InsertarPersona()
@@ -150,7 +157,7 @@ namespace Guia_9
 
                 AccesoDB.ConectarDB();
 
-                consulta = $"INSERT INTO personas (legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja) VALUES ({legajo},{TxtDni.Text},'{TxtApellido.Text}','{TxtNombre.Text}','{TxtTelefono.Text}','{TxtDireccion.Text}','{TxtTelefono2.Text}', {menquin}, {false});";
+                consulta = $"INSERT INTO personas (legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja) VALUES ({legajo},{TxtDni.Text},'{TxtApellido.Text.ToLower()}','{TxtNombre.Text.ToLower()}','{TxtTelefono.Text}','{TxtDireccion.Text.ToLower()}','{TxtTelefono2.Text}', {menquin}, {false});";
 
 
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
@@ -173,7 +180,8 @@ namespace Guia_9
                 AccesoDB.CerrarDB();
                 Progres.Visible = false;
 
-                this.Enabled = true;
+            HabilitarBtns(true);
+
                 TxtNombre.Focus();
             }
         }

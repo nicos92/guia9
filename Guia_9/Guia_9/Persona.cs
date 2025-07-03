@@ -14,7 +14,7 @@ namespace Guia_9
             Legajo = legajo;
             Dni = dni;
             Apellido = apellido;
-            Nombre = nombre;
+            Nombres = nombre;
             Telefono = telefono;
             Telefono2 = telefono2;
             Direccion = direccion;
@@ -34,7 +34,7 @@ namespace Guia_9
         public int Legajo { get; set; }
         public int Dni { get; set; }
         public string Apellido { get; set; }
-        public string Nombre { get; set; }
+        public string Nombres { get; set; }
         public string Telefono { get; set; }
         public string Telefono2 { get; set; }
         public string Direccion { get; set; }

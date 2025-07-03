@@ -251,7 +251,10 @@
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(738, 206);
             this.DGV.TabIndex = 0;
-            
+            this.DGV.VirtualMode = true;
+            this.DGV.DataSourceChanged += new System.EventHandler(this.DGV_DataSourceChanged);
+            this.DGV.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_ColumnHeaderMouseClick);
+            this.DGV.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGV_RowsRemoved);
             this.DGV.SelectionChanged += new System.EventHandler(this.DGV_SelectionChanged);
             // 
             // Progres

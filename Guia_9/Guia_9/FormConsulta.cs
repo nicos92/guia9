@@ -18,9 +18,11 @@ namespace Guia_9
 {
     public partial class FormConsulta : Form
     {
-        
-        private const string CONSULTA = "SELECT Id, legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja  FROM personas";
+        private bool btntodosconsul = false;
+        private bool ascdesc = false;
+        private const string CONSULTA = "SELECT Id, legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja  FROM personas WHERE fecha_eliminacion IS NULL ";
         private string _consulta = "";
+
 
         public FormConsulta()
         {
@@ -28,26 +30,20 @@ namespace Guia_9
             _primeravez = 0;
         }
 
-        
+
         private BindingList<Persona> _personasBindingList;
         private int _primeravez;
 
-      
+
         private void ConfigurarDGV()
         {
-         
-            DGV.AutoGenerateColumns = false;
-            DGV.RowHeadersVisible = false;
-            DGV.AllowUserToAddRows = false;
-            DGV.AllowUserToDeleteRows = false;
-            DGV.AllowUserToOrderColumns = false;
-            DGV.ReadOnly = true;
-            DGV.MultiSelect = false;
 
-     
+
+
+
             DGV.Columns.Clear();
 
-  
+
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 Name = "colId",
@@ -78,9 +74,9 @@ namespace Guia_9
             });
             DGV.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                Name = "colNombre",
-                DataPropertyName = "Nombre",
-                HeaderText = "NOMBRE",
+                Name = "colNombres",
+                DataPropertyName = "nombres",
+                HeaderText = "NOMBRES",
                 Width = 150
             });
 
@@ -125,7 +121,7 @@ namespace Guia_9
         private void CargarDatos(List<Persona> datosCompletos)
         {
 
-            DGV.VirtualMode = true;
+
 
 
             _personasBindingList = new BindingList<Persona>(datosCompletos);
@@ -134,7 +130,7 @@ namespace Guia_9
             bindingSource.DataSource = _personasBindingList;
             //DGV.DataSource = bindingSource;
             DGV.DataSource = _personasBindingList;
-
+           
 
 
         }
@@ -154,7 +150,6 @@ namespace Guia_9
             try
             {
                 AccesoDB.ConectarDB();
-                MessageBox.Show(_consulta);
                 lector = AccesoDB.LecturaDB(_consulta);
                 List<Persona> personas = new List<Persona>();
                 while (lector.Read())
@@ -167,7 +162,7 @@ namespace Guia_9
                         Legajo = Convert.ToInt32(lector[1]),
                         Dni = Convert.ToInt32(lector[2]),
                         Apellido = lector[3].ToString(),
-                        Nombre = lector[4].ToString(),
+                        Nombres = lector[4].ToString(),
                         Telefono = lector[5].ToString(),
                         Direccion = lector[6].ToString(),
                         Telefono2 = lector[7].ToString(),
@@ -178,9 +173,9 @@ namespace Guia_9
                 }
                 CargarDatos(personas);
             }
-            catch( OleDbException ez)
+            catch (OleDbException ez)
             {
-                MessageBox.Show("Error al consultar: \n" + ez.Message, "Error base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error  );
+                MessageBox.Show("Error al consultar: \n" + ez.Message, "Error base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -198,10 +193,10 @@ namespace Guia_9
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-           
+            btntodosconsul = false;
             DesactivarBotones(false);
-            
-            BackWorker.RunWorkerAsync(sender );
+
+            BackWorker.RunWorkerAsync(sender);
 
         }
 
@@ -235,14 +230,14 @@ namespace Guia_9
 
         private void BackWork_DoWork(object sender, DoWorkEventArgs e)
         {
-            Button btn =  e.Argument as Button;
+            Button btn = e.Argument as Button;
             if (btn.Tag.ToString() == "0")
             {
-                _consulta = CONSULTA + " WHERE fecha_eliminacion IS NULL;";
+                _consulta = CONSULTA;
             }
             if (btn.Tag.ToString() == "1")
             {
-                _consulta = CONSULTA + $" WHERE (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND fecha_eliminacion IS NULL AND baja = False;";
+                _consulta = CONSULTA + $" AND (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND baja = False;";
             }
 
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -260,13 +255,14 @@ namespace Guia_9
 
         private void BackWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+
             string dni = TxtDni.Text;
             //string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
             //BuscarPorDni();
             ObtenerPersonas();
             DesactivarEditElim();
             DesactivarBotones(true);
+            DesacBtn();
             TxtDni.Focus();
 
 
@@ -291,15 +287,16 @@ namespace Guia_9
             if (_primeravez == 0)
             {
                 _primeravez = 1;
-            DesactivarBotones(false);
-            BackWorker.RunWorkerAsync(BtnBuscar);
-            //ObtenerPersonas(CONSULTA);
-            DesactivarEditElim();
+                DesactivarBotones(false);
+                BackWorker.RunWorkerAsync(BtnBuscar);
+                //ObtenerPersonas(CONSULTA);
+                DesactivarEditElim();
             }
         }
 
         private void BtnVerTodos_Click(object sender, EventArgs e)
         {
+            btntodosconsul = true;
             DesactivarBotones(false);
             BackWorker.RunWorkerAsync(sender);
             //ObtenerPersonas(CONSULTA);
@@ -312,6 +309,9 @@ namespace Guia_9
             BtnEditar.Enabled = bol;
             BtnEliminar.Enabled = bol;
             Progres.Visible = !bol;
+            PanelBajo.Enabled = bol;
+            PanelTop.Enabled = bol;
+
         }
 
         private void DGV_SelectionChanged(object sender, EventArgs e)
@@ -329,7 +329,7 @@ namespace Guia_9
                 Legajo = Convert.ToInt32(datos[1].Value),
                 Dni = Convert.ToInt32(datos[2].Value),
                 Apellido = datos[3].Value.ToString(),
-                Nombre = datos[4].Value.ToString(),
+                Nombres = datos[4].Value.ToString(),
                 Telefono = datos[5].Value.ToString(),
                 Telefono2 = datos[6].Value.ToString(),
                 Direccion = datos[7].Value.ToString(),
@@ -337,8 +337,8 @@ namespace Guia_9
                 Baja = datos[9].Value.ToString()
 
             };
-            
-            FormEdicion fm = new FormEdicion(persona,BtnVerTodos);
+
+            FormEdicion fm = new FormEdicion(persona, BtnVerTodos);
             fm.ShowDialog();
 
         }
@@ -358,7 +358,15 @@ namespace Guia_9
             if (dr == DialogResult.Yes)
             {
                 ElimarResgistro(id);
-                BtnVerTodos.PerformClick();
+                if (ascdesc)
+                {
+
+                    BtnVerTodos.PerformClick();
+                }
+                else
+                {
+                    BtnBuscar.PerformClick();
+                }
             }
         }
 
@@ -382,8 +390,94 @@ namespace Guia_9
             {
                 AccesoDB.CerrarDB();
             }
+         
         }
 
-       
+        private void DGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var columna = DGV.Columns[e.ColumnIndex];
+            string nomcol = columna.DataPropertyName;
+            OrdenarLista(nomcol);
+
+        }
+
+        private void OrdenarLista(string columna)
+        {
+            if (btntodosconsul)
+            {
+                if (ascdesc)
+                {
+                    _consulta = CONSULTA + " ORDER BY " + columna + " ASC";
+
+                }
+                else
+                {
+                    _consulta = CONSULTA + " ORDER BY " + columna + " DESC";
+
+                }
+            }
+            else
+            {
+                if (ascdesc)
+                {
+                    _consulta = CONSULTA + " AND baja = False ORDER BY " + columna + " ASC";
+
+                }
+                else
+                {
+                    _consulta = CONSULTA + " AND baja = False ORDER BY " + columna + " DESC";
+
+                }
+            }
+
+            ascdesc = !ascdesc;
+
+
+            ObtenerPersonas();
+
+        }
+
+        private void DGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (DGV.Rows.Count > 0)
+            {
+                BtnEditar.Enabled = true;
+                BtnEliminar.Enabled = true;
+            }
+            else
+            {
+                BtnEditar.Enabled = false;
+                BtnEliminar.Enabled = false;
+            }
+        }
+
+        private void DesacBtn()
+        {
+            if (DGV.Rows.Count > 0)
+            {
+                BtnEditar.Enabled = true;
+                BtnEliminar.Enabled = true;
+            }
+            else
+            {
+                BtnEditar.Enabled = false;
+                BtnEliminar.Enabled = false;
+            }
+        }
+
+        private void DGV_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (DGV.Rows.Count > 0)
+            {
+                BtnEditar.Enabled = false;
+                BtnEliminar.Enabled = false;
+            }
+            else
+            {
+                
+                BtnEditar.Enabled = true;
+                BtnEliminar.Enabled = true;
+            }
+        }
     }
 }

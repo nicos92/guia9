@@ -35,7 +35,7 @@ namespace Guia_9
         {
             LblId.Text = "Id: " + _persona.Id.ToString();
             LblLegajo.Text = "Legajo: " + _persona.Legajo.ToString();
-            TxtNombre.Text = _persona.Nombre;
+            TxtNombre.Text = _persona.Nombres;
             TxtApellido.Text = _persona.Apellido;
             TxtDni.Text = _persona.Dni.ToString();
             TxtDireccion.Text = _persona.Direccion;
@@ -68,7 +68,7 @@ namespace Guia_9
         {
             try
             {
-                string consulta = $"UPDATE personas SET legajo = {_persona.Legajo}, dni = {TxtDni.Text}, apellido = '{TxtApellido.Text}', nombres = '{TxtNombre.Text}', telefono = '{TxtTelefono.Text}', direccion = '{TxtDireccion.Text}', telefono2 = '{TxtTelefono2.Text}', mensualquincenal = {RBtnMensual.Checked}, baja = {ChBBaja.Checked}, fecha_modificacion = Now() WHERE id = {_persona.Id} ;";
+                string consulta = $"UPDATE personas SET legajo = {_persona.Legajo}, dni = {TxtDni.Text}, apellido = '{TxtApellido.Text.ToLower()}', nombres = '{TxtNombre.Text.ToLower()}', telefono = '{TxtTelefono.Text}', direccion = '{TxtDireccion.Text.ToLower()}', telefono2 = '{TxtTelefono2.Text}', mensualquincenal = {RBtnMensual.Checked}, baja = {ChBBaja.Checked}, fecha_modificacion = Now() WHERE id = {_persona.Id} ;";
 
 
                 AccesoDB.ConectarDB();
