@@ -20,7 +20,7 @@ namespace Guia_9
     {
         private bool btntodosconsul = false;
         private bool ascdesc = false;
-        private const string CONSULTA = "SELECT Id, legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja  FROM personas WHERE fecha_eliminacion IS NULL ";
+        private const string CONSULTA = "SELECT Id, legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja FROM personas ";
         private string _consulta = "";
 
 
@@ -237,7 +237,7 @@ namespace Guia_9
             }
             if (btn.Tag.ToString() == "1")
             {
-                _consulta = CONSULTA + $" AND (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND baja = False;";
+                _consulta = CONSULTA + $" WHERE (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND baja = False;";
             }
 
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -284,14 +284,17 @@ namespace Guia_9
 
         private void FormConsulta_Activated(object sender, EventArgs e)
         {
-            if (_primeravez == 0)
+            if (Properties.Settings.Default.actconsultas)
             {
-                _primeravez = 1;
+                Properties.Settings.Default.actconsultas = false;
+                Properties.Settings.Default.Save();
                 DesactivarBotones(false);
                 BackWorker.RunWorkerAsync(BtnBuscar);
                 //ObtenerPersonas(CONSULTA);
                 DesactivarEditElim();
             }
+
+
         }
 
         private void BtnVerTodos_Click(object sender, EventArgs e)
@@ -375,7 +378,8 @@ namespace Guia_9
             try
             {
                 AccesoDB.ConectarDB();
-                string consulta = $"UPDATE personas SET fecha_eliminacion = Now() WHERE id = {id};";
+                //string consulta = $"UPDATE personas SET fecha_eliminacion = Now() WHERE id = {id};";
+                string consulta = $"DELETE FROM personas WHERE id = {id}";
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
                 if (res > 0)
                 {
@@ -420,12 +424,12 @@ namespace Guia_9
             {
                 if (ascdesc)
                 {
-                    _consulta = CONSULTA + " AND baja = False ORDER BY " + columna + " ASC";
+                    _consulta = CONSULTA + " WHERE baja = False ORDER BY " + columna + " ASC";
 
                 }
                 else
                 {
-                    _consulta = CONSULTA + " AND baja = False ORDER BY " + columna + " DESC";
+                    _consulta = CONSULTA + " WHERE baja = False ORDER BY " + columna + " DESC";
 
                 }
             }
@@ -465,19 +469,6 @@ namespace Guia_9
             }
         }
 
-        private void DGV_DataSourceChanged(object sender, EventArgs e)
-        {
-            if (DGV.Rows.Count > 0)
-            {
-                BtnEditar.Enabled = false;
-                BtnEliminar.Enabled = false;
-            }
-            else
-            {
-                
-                BtnEditar.Enabled = true;
-                BtnEliminar.Enabled = true;
-            }
-        }
+       
     }
 }

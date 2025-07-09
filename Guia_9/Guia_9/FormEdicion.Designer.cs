@@ -238,6 +238,7 @@
             this.TxtTelefono2.Location = new System.Drawing.Point(159, 179);
             this.TxtTelefono2.MaxLength = 10;
             this.TxtTelefono2.Name = "TxtTelefono2";
+            this.TxtTelefono2.ShortcutsEnabled = false;
             this.TxtTelefono2.Size = new System.Drawing.Size(350, 25);
             this.TxtTelefono2.TabIndex = 12;
             this.TxtTelefono2.TextChanged += new System.EventHandler(this.Txt_TextChanged);
@@ -261,6 +262,7 @@
             this.TxtTelefono.Location = new System.Drawing.Point(159, 148);
             this.TxtTelefono.MaxLength = 10;
             this.TxtTelefono.Name = "TxtTelefono";
+            this.TxtTelefono.ShortcutsEnabled = false;
             this.TxtTelefono.Size = new System.Drawing.Size(350, 25);
             this.TxtTelefono.TabIndex = 11;
             this.TxtTelefono.TextChanged += new System.EventHandler(this.Txt_TextChanged);
@@ -284,6 +286,7 @@
             this.TxtDireccion.Location = new System.Drawing.Point(159, 117);
             this.TxtDireccion.MaxLength = 50;
             this.TxtDireccion.Name = "TxtDireccion";
+            this.TxtDireccion.ShortcutsEnabled = false;
             this.TxtDireccion.Size = new System.Drawing.Size(350, 25);
             this.TxtDireccion.TabIndex = 10;
             this.TxtDireccion.TextChanged += new System.EventHandler(this.Txt_TextChanged);
@@ -307,6 +310,7 @@
             this.TxtDni.Location = new System.Drawing.Point(159, 86);
             this.TxtDni.MaxLength = 8;
             this.TxtDni.Name = "TxtDni";
+            this.TxtDni.ShortcutsEnabled = false;
             this.TxtDni.Size = new System.Drawing.Size(350, 25);
             this.TxtDni.TabIndex = 9;
             this.TxtDni.TextChanged += new System.EventHandler(this.Txt_TextChanged);
@@ -330,6 +334,7 @@
             this.TxtApellido.Location = new System.Drawing.Point(159, 55);
             this.TxtApellido.MaxLength = 50;
             this.TxtApellido.Name = "TxtApellido";
+            this.TxtApellido.ShortcutsEnabled = false;
             this.TxtApellido.Size = new System.Drawing.Size(350, 25);
             this.TxtApellido.TabIndex = 8;
             this.TxtApellido.TextChanged += new System.EventHandler(this.Txt_TextChanged);
@@ -353,6 +358,7 @@
             this.TxtNombre.Location = new System.Drawing.Point(159, 24);
             this.TxtNombre.MaxLength = 50;
             this.TxtNombre.Name = "TxtNombre";
+            this.TxtNombre.ShortcutsEnabled = false;
             this.TxtNombre.Size = new System.Drawing.Size(350, 25);
             this.TxtNombre.TabIndex = 7;
             this.TxtNombre.Text = "w";

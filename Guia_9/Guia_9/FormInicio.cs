@@ -32,7 +32,7 @@ namespace Guia_9
             {
 
                 AccesoDB.ConectarDB();
-                string consulta = $"SELECT COUNT(id) FROM personas WHERE baja = False AND fecha_eliminacion IS NULL;";
+                string consulta = $"SELECT COUNT(id) FROM personas WHERE baja = False";
                 lector = AccesoDB.LecturaDB(consulta);
                 while (lector.Read())
                 {

@@ -166,6 +166,8 @@ namespace Guia_9
                 {
                     MessageBox.Show("Ingreso Correcto", "Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarForm();
+                    Properties.Settings.Default.actconsultas = true;
+                    Properties.Settings.Default.Save();
                 }
 
             }

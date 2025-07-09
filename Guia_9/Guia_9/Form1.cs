@@ -29,6 +29,8 @@ namespace Guia_9
             nuevoForm.MdiParent = this;
             nuevoForm.Dock = DockStyle.Fill;
             nuevoForm.Show();
+            Properties.Settings.Default.actconsultas = true;
+            Properties.Settings.Default.Save();
         }
         private void BtnForms(object sender, EventArgs e)
         {

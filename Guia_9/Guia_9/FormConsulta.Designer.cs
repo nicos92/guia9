@@ -154,6 +154,7 @@
             this.TxtDni.Location = new System.Drawing.Point(195, 19);
             this.TxtDni.MaxLength = 50;
             this.TxtDni.Name = "TxtDni";
+            this.TxtDni.ShortcutsEnabled = false;
             this.TxtDni.Size = new System.Drawing.Size(250, 25);
             this.TxtDni.TabIndex = 10;
             this.TxtDni.TextChanged += new System.EventHandler(this.TxtDni_TextChanged);
@@ -240,7 +241,7 @@
             // 
             this.DGV.AllowUserToAddRows = false;
             this.DGV.AllowUserToDeleteRows = false;
-            this.DGV.AllowUserToOrderColumns = true;
+            this.DGV.AllowUserToResizeColumns = false;
             this.DGV.AllowUserToResizeRows = false;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -248,11 +249,11 @@
             this.DGV.MultiSelect = false;
             this.DGV.Name = "DGV";
             this.DGV.ReadOnly = true;
+            this.DGV.RowHeadersVisible = false;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(738, 206);
             this.DGV.TabIndex = 0;
             this.DGV.VirtualMode = true;
-            this.DGV.DataSourceChanged += new System.EventHandler(this.DGV_DataSourceChanged);
             this.DGV.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_ColumnHeaderMouseClick);
             this.DGV.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGV_RowsRemoved);
             this.DGV.SelectionChanged += new System.EventHandler(this.DGV_SelectionChanged);
