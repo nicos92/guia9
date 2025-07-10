@@ -19,6 +19,7 @@ namespace Guia_9
     public partial class FormIngreso : Form
     {
         private BackWork _myWork;
+        private string _codigo;
         public FormIngreso()
         {
             InitializeComponent();
@@ -137,34 +138,25 @@ namespace Guia_9
 
         private void InsertarPersona()
         {
-            OleDbDataReader lector = null;
-            int legajo = 0;
-            bool menquin = RBtnMensual.Checked ? true : false;
+           
+         
             try
             {
                 string dni = TxtModelo.Text;
-                AccesoDB.ConectarDB();
-                string consulta = $"SELECT Articulo_Codigo FROM Electrodomesticos where id = (select max(id) from electrodomesticos)";
-                lector = AccesoDB.LecturaDB(consulta);
-                while (lector.Read())
-                {
-                    legajo = lector[0] == DBNull.Value ? 1 : Convert.ToInt32(lector[0]) + 1;
-                }
-                lector.Close();
-                AccesoDB.CerrarDB();
-                string codigo = legajo.ToString("0000");
+                
+           
 
                 string fecha = DateTime.Now.ToLongDateString();
                 AccesoDB.ConectarDB();
 
-                consulta = $"INSERT INTO Electrodomesticos (Articulo_Codigo, Articulo_Tipo, Articulo_Marca, Articulo_Modelo, Articulo_Caracteristicas, Articulo_Cantidad_Stock, Articulo_Precio, Articulo_Ingreso) VALUES ('{codigo}', '{TxtTipo.Text.ToLower()}', '{TxtMarca.Text.ToLower()}','{TxtModelo.Text.ToLower()}','{TxtCarac.Text.ToLower()}',{Txtstock.Text},{TxtPrecio.Text}, '{fecha}' );";
+                string consulta = $"INSERT INTO Electrodomesticos (Articulo_Codigo, Articulo_Tipo, Articulo_Marca, Articulo_Modelo, Articulo_Caracteristicas, Articulo_Cantidad_Stock, Articulo_Precio, Articulo_Ingreso) VALUES ('{_codigo}', '{TxtTipo.Text.ToLower()}', '{TxtMarca.Text.ToLower()}','{TxtModelo.Text.ToLower()}','{TxtCarac.Text.ToLower()}',{Txtstock.Text},{TxtPrecio.Text}, '{fecha}' );";
                
 
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
 
                 if (res > 0)
                 {
-                    MessageBox.Show("Ingreso Correcto", "Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Ingreso Correcto:\nCódigo: {_codigo}\nTipo: {TxtTipo.Text}\nMarca: {TxtMarca.Text}\nModelo: {TxtModelo.Text} ", "Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarForm();
                     Properties.Settings.Default.actconsultas = true;
                     Properties.Settings.Default.Save();
@@ -178,7 +170,7 @@ namespace Guia_9
             }
             finally
             {
-                lector.Close();
+               
                 AccesoDB.CerrarDB();
                 Progres.Visible = false;
 
@@ -186,6 +178,7 @@ namespace Guia_9
 
                 TxtTipo.Focus();
             }
+            ObtenerNuevoCodigo();
         }
 
         private void LimpiarForm()
@@ -199,8 +192,39 @@ namespace Guia_9
             }
         }
 
+        private void ObtenerNuevoCodigo()
+        {
+            OleDbDataReader lector = null;
+            int legajo = 0;
+
+            try
+            {
+                string dni = TxtModelo.Text;
+                AccesoDB.ConectarDB();
+                string consulta = $"SELECT Articulo_Codigo FROM Electrodomesticos where id = (select max(id) from electrodomesticos)";
+                lector = AccesoDB.LecturaDB(consulta);
+                while (lector.Read())
+                {
+                    legajo = lector[0] == DBNull.Value ? 1 : Convert.ToInt32(lector[0]) + 1;
+                }
+                lector.Close();
+                AccesoDB.CerrarDB();
+                _codigo = legajo.ToString("0000");
+                LblCodigo.Text = _codigo;
+                
+
+            }
+            catch (OleDbException ex)
+            {
+                string error = ex.Message.Contains("valores duplicados") ? "DNI duplicado" : ex.Message;
+                MessageBox.Show(error, "Error en la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
         private void FormIngreso_Activated(object sender, EventArgs e)
         {
+            ObtenerNuevoCodigo();
             TxtTipo.Focus();
         }
     }

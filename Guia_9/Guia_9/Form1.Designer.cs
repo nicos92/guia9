@@ -144,7 +144,7 @@
             this.Name = "FormPrincipal";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Personas";
+            this.Text = "Electrodomesticos";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.PanelTop.ResumeLayout(false);
             this.TableLayoutPaneltop.ResumeLayout(false);
