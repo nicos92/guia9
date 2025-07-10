@@ -20,17 +20,17 @@
 
 #### Logo del Instituto
 
-![Logo del Instituto](.\recursos\insti.png)
+![Logo del Instituto](recursos\insti.png)
 
 #### Imagenes del Proyecto
 
-![Imagen del Proyecto](C:\Users\nicos92\Mi%20unidad\ISFT_N_93\2do%20B\seminario\guia_9\recursos\inicio.png)
+![Imagen del Proyecto](recursos\inicio.png)
 
-![ingreso](C:\Users\nicos92\Mi%20unidad\ISFT_N_93\2do%20B\seminario\guia_9\recursos\ingreso.png)
+![ingreso](recursos\ingreso.png)
 
-![](.\recursos\busqueda.png)
+![](recursos\busqueda.png)
 
-![edicion](.\recursos\edicion.png)
+![edicion](recursos\edicion.png)
 
 ---
 
