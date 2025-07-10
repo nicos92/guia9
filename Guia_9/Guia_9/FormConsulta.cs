@@ -20,116 +20,36 @@ namespace Guia_9
     {
         private bool btntodosconsul = false;
         private bool ascdesc = false;
-        private const string CONSULTA = "SELECT Id, legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja FROM personas ";
+        private const string CONSULTA = "SELECT Id, Articulo_Codigo,Articulo_Tipo, Articulo_Marca,Articulo_Modelo,Articulo_Caracteristicas,Articulo_Cantidad_stock, Articulo_Precio, Articulo_Ingreso FROM Electrodomesticos ";
         private string _consulta = "";
 
 
         public FormConsulta()
         {
             InitializeComponent();
-            _primeravez = 0;
+          
         }
 
 
-        private BindingList<Persona> _personasBindingList;
-        private int _primeravez;
+        private BindingList<Electrodomestico> _electrosBindingList;
+ 
 
 
-        private void ConfigurarDGV()
+       
+
+
+        private void CargarDatos(List<Electrodomestico> datosCompletos)
         {
 
 
 
 
-            DGV.Columns.Clear();
-
-
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colId",
-                DataPropertyName = "Id",
-                HeaderText = "ID",
-                Width = 50
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colLegajo",
-                DataPropertyName = "Legajo",
-                HeaderText = "LEGAJO",
-                Width = 60
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colDni",
-                DataPropertyName = "DNI",
-                HeaderText = "DNI",
-                Width = 100
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colApellido",
-                DataPropertyName = "Apellido",
-                HeaderText = "APELLIDO",
-                Width = 150
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colNombres",
-                DataPropertyName = "nombres",
-                HeaderText = "NOMBRES",
-                Width = 150
-            });
-
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colTelefono",
-                DataPropertyName = "Telefono",
-                HeaderText = "TELEFONO",
-                Width = 90
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colTelefono2",
-                DataPropertyName = "Telefono2",
-                HeaderText = "TELEFONO 2",
-                Width = 90
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colDireccion",
-                DataPropertyName = "Direccion",
-                HeaderText = "DIRECCION",
-                Width = 150
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colMensualQuincenal",
-                DataPropertyName = "MensualQuincenal",
-                HeaderText = "MENSUAL - QUINCENAL",
-                Width = 150
-            });
-            DGV.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "colBaja",
-                DataPropertyName = "Baja",
-                HeaderText = "BAJA",
-                Width = 50
-            });
-        }
-
-
-        private void CargarDatos(List<Persona> datosCompletos)
-        {
-
-
-
-
-            _personasBindingList = new BindingList<Persona>(datosCompletos);
+            _electrosBindingList = new BindingList<Electrodomestico>(datosCompletos);
 
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = _personasBindingList;
+            bindingSource.DataSource = _electrosBindingList;
             //DGV.DataSource = bindingSource;
-            DGV.DataSource = _personasBindingList;
+            DGV.DataSource = _electrosBindingList;
            
 
 
@@ -140,8 +60,8 @@ namespace Guia_9
 
         private void FormConsulta_Load(object sender, EventArgs e)
         {
-            ConfigurarDGV();
-            EP.SetError(TxtDni, "Para buscar por dni al menos ingrese un numero");
+            //ConfigurarDGV();
+            EP.SetError(TxtBusqueda, "Para tener una mejor busqueda al menos ingrese un numero o letra");
         }
 
         private void ObtenerPersonas()
@@ -151,27 +71,27 @@ namespace Guia_9
             {
                 AccesoDB.ConectarDB();
                 lector = AccesoDB.LecturaDB(_consulta);
-                List<Persona> personas = new List<Persona>();
+                List<Electrodomestico> electros = new List<Electrodomestico>();
                 while (lector.Read())
                 {
-                    string mensual = Convert.ToBoolean(lector[8]) ? "Mensual" : "Quincenal";
-                    string baja = Convert.ToBoolean(lector[9]) ? "Si" : "No";
-                    Persona lapersona = new Persona()
+                   
+                    Electrodomestico electro = new Electrodomestico()
                     {
                         Id = Convert.ToInt32(lector[0]),
-                        Legajo = Convert.ToInt32(lector[1]),
-                        Dni = Convert.ToInt32(lector[2]),
-                        Apellido = lector[3].ToString(),
-                        Nombres = lector[4].ToString(),
-                        Telefono = lector[5].ToString(),
-                        Direccion = lector[6].ToString(),
-                        Telefono2 = lector[7].ToString(),
-                        MensualQuincenal = mensual,
-                        Baja = baja
+                        Articulo_Codigo = lector[1].ToString(),
+                        Articulo_Tipo = lector[2].ToString(),
+                        Articulo_Marca = lector[3].ToString(),
+                        Articulo_Modelo = lector[4].ToString(),
+                        Articulo_Caracteristicas = lector[5].ToString(),
+                        Articulo_Cantidad_Stock =Convert.ToInt32( lector[6]),
+                        Articulo_Precio = Convert.ToInt32(lector[7]),
+                        Articulo_Ingreso = lector[8].ToString()
                     };
-                    personas.Add(lapersona);
+                    electros.Add(electro);
                 }
-                CargarDatos(personas);
+                CargarDatos(electros);
+                
+
             }
             catch (OleDbException ez)
             {
@@ -203,13 +123,13 @@ namespace Guia_9
         private void TxtDni_TextChanged(object sender, EventArgs e)
         {
 
-            if (TxtDni.Text.Length > 0)
+            if (TxtBusqueda.Text.Length > 0)
             {
                 EP.Clear();
             }
             else
             {
-                EP.SetError(TxtDni, "Para obtener una mejor busqueda por dni, apellido ó nombre ingrese una letra o un número");
+                EP.SetError(TxtBusqueda, "Para obtener una mejor busqueda por dni, apellido ó nombre ingrese una letra o un número");
 
             }
         }
@@ -233,11 +153,12 @@ namespace Guia_9
             Button btn = e.Argument as Button;
             if (btn.Tag.ToString() == "0")
             {
-                _consulta = CONSULTA;
+                _consulta = CONSULTA + " ORDER BY Id DESC;";
             }
             if (btn.Tag.ToString() == "1")
             {
-                _consulta = CONSULTA + $" WHERE (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND baja = False;";
+                // _consulta = CONSULTA + $" WHERE (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND baja = False;";
+                _consulta = CONSULTA + $" WHERE (Articulo_Codigo LIKE '{TxtBusqueda.Text}%' OR Articulo_Tipo LIKE '{TxtBusqueda.Text}%' OR Articulo_Marca LIKE '{TxtBusqueda.Text}%' OR Articulo_Modelo LIKE '{TxtBusqueda.Text}%' ) AND Articulo_Cantidad_Stock > 0 ORDER BY Id DESC";
             }
 
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -256,14 +177,14 @@ namespace Guia_9
         private void BackWork_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
-            string dni = TxtDni.Text;
+            string dni = TxtBusqueda.Text;
             //string consulta = $"SELECT * FROM personas WHERE dni LIKE '{dni}%';";
             //BuscarPorDni();
             ObtenerPersonas();
             DesactivarEditElim();
             DesactivarBotones(true);
             DesacBtn();
-            TxtDni.Focus();
+            TxtBusqueda.Focus();
 
 
         }
@@ -326,22 +247,20 @@ namespace Guia_9
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             DataGridViewCellCollection datos = DGV.CurrentRow.Cells;
-            Persona persona = new Persona()
+            Electrodomestico electro = new Electrodomestico()
             {
                 Id = Convert.ToInt32(datos[0].Value),
-                Legajo = Convert.ToInt32(datos[1].Value),
-                Dni = Convert.ToInt32(datos[2].Value),
-                Apellido = datos[3].Value.ToString(),
-                Nombres = datos[4].Value.ToString(),
-                Telefono = datos[5].Value.ToString(),
-                Telefono2 = datos[6].Value.ToString(),
-                Direccion = datos[7].Value.ToString(),
-                MensualQuincenal = datos[8].Value.ToString(),
-                Baja = datos[9].Value.ToString()
-
+                Articulo_Codigo = datos[1].Value.ToString(),
+                Articulo_Tipo = datos[2].Value.ToString(),
+                Articulo_Marca = datos[3].Value.ToString(),
+                Articulo_Modelo = datos[4].Value.ToString(),
+                Articulo_Caracteristicas = datos[5].Value.ToString(),
+                Articulo_Cantidad_Stock = Convert.ToInt32(datos[6].Value),
+                Articulo_Precio = Convert.ToInt32(datos[7].Value),
+               
             };
 
-            FormEdicion fm = new FormEdicion(persona, BtnVerTodos);
+            FormEdicion fm = new FormEdicion(electro, BtnVerTodos);
             fm.ShowDialog();
 
         }
@@ -356,7 +275,7 @@ namespace Guia_9
             string apellido = datos[3].Value.ToString();
             string nombre = datos[4].Value.ToString();
 
-            string msj = $"Legajo: {legajo}\nDNI: {dni}\nApellido: {apellido}\nNombre: {nombre}";
+            string msj = $"Codigo: {legajo}\nTipo: {dni}\nMarca: {apellido}\nModelo: {nombre}";
             DialogResult dr = MessageBox.Show("Estas seguro que quieres eliminar el registro?\n" + msj, "Eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
@@ -379,7 +298,7 @@ namespace Guia_9
             {
                 AccesoDB.ConectarDB();
                 //string consulta = $"UPDATE personas SET fecha_eliminacion = Now() WHERE id = {id};";
-                string consulta = $"DELETE FROM personas WHERE id = {id}";
+                string consulta = $"DELETE FROM Electrodomesticos WHERE Id = {id}";
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
                 if (res > 0)
                 {
@@ -424,12 +343,12 @@ namespace Guia_9
             {
                 if (ascdesc)
                 {
-                    _consulta = CONSULTA + " WHERE baja = False ORDER BY " + columna + " ASC";
+                    _consulta = CONSULTA + " WHERE Articulo_Cantidad_Stock > 0 ORDER BY " + columna + " ASC";
 
                 }
                 else
                 {
-                    _consulta = CONSULTA + " WHERE baja = False ORDER BY " + columna + " DESC";
+                    _consulta = CONSULTA + " WHERE Articulo_Cantidad_Stock > 0  ORDER BY " + columna + " DESC";
 
                 }
             }

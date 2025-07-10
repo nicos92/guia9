@@ -16,42 +16,39 @@ namespace Guia_9
     public partial class FormEdicion : Form
     {
         private BackWork _myWorker;
-        private Persona _persona;
+        private Electrodomestico _electro;
         private Button _form;
         private bool _edicion = false;
+        private Electrodomestico electro;
+        private Button btnVerTodos;
+
         public FormEdicion()
         {
             InitializeComponent();
         }
-        public FormEdicion(Persona persona, Control parent)
+        public FormEdicion(Electrodomestico electro, Control parent)
         {
             InitializeComponent();
-            _persona = persona;
+            _electro = electro;
             _form = parent as Button;
             _myWorker = new BackWork(Progres, Edicion);
         }
 
+       
+
         private void FormModifica_Load(object sender, EventArgs e)
         {
-            LblId.Text = "Id: " + _persona.Id.ToString();
-            LblLegajo.Text = "Legajo: " + _persona.Legajo.ToString();
-            TxtNombre.Text = _persona.Nombres;
-            TxtApellido.Text = _persona.Apellido;
-            TxtDni.Text = _persona.Dni.ToString();
-            TxtDireccion.Text = _persona.Direccion;
-            TxtTelefono.Text = _persona.Telefono;
-            TxtTelefono2.Text = _persona.Telefono2;
-            if (_persona.MensualQuincenal.StartsWith("M"))
-            {
-                RBtnMensual.Checked = true;
-                RBtnQuincenal.Checked = false;
-            }
-            else
-            {
-                RBtnMensual.Checked = false;
-                RBtnQuincenal.Checked = true;
-            }
-            ChBBaja.Checked = _persona.Baja.StartsWith("S") ? true : false;
+            LblId.Text = "Id: " + _electro.Id.ToString();
+            LblLegajo.Text = "Codigo: " + _electro.Articulo_Codigo.ToString();
+            TxtTipo.Text = _electro.Articulo_Tipo;
+            TxtMarca.Text = _electro.Articulo_Marca;
+            TxtModelo.Text = _electro.Articulo_Modelo.ToString();
+            TxtCarac.Text = _electro.Articulo_Caracteristicas;
+            TxtStock.Text = _electro.Articulo_Cantidad_Stock.ToString();
+            TxtPrecio.Text = _electro.Articulo_Precio.ToString();
+            TxtTipo.Focus();
+            TxtTipo.SelectAll();
+            
         }
       
         private void BtnEditar_Click(object sender, EventArgs e)
@@ -68,7 +65,7 @@ namespace Guia_9
         {
             try
             {
-                string consulta = $"UPDATE personas SET legajo = {_persona.Legajo}, dni = {TxtDni.Text}, apellido = '{TxtApellido.Text.ToLower()}', nombres = '{TxtNombre.Text.ToLower()}', telefono = '{TxtTelefono.Text}', direccion = '{TxtDireccion.Text.ToLower()}', telefono2 = '{TxtTelefono2.Text}', mensualquincenal = {RBtnMensual.Checked}, baja = {ChBBaja.Checked}, fecha_modificacion = Now() WHERE id = {_persona.Id} ;";
+                string consulta = $"UPDATE Electrodomesticos SET  Articulo_Modelo = '{TxtModelo.Text}', Articulo_Marca = '{TxtMarca.Text.ToLower()}', Articulo_Tipo = '{TxtTipo.Text.ToLower()}', Articulo_Cantidad_stock = {TxtStock.Text}, Articulo_Caracteristicas = '{TxtCarac.Text.ToLower()}', Articulo_Precio = {TxtPrecio.Text}  WHERE id = {_electro.Id} ;";
 
 
                 AccesoDB.ConectarDB();
@@ -83,8 +80,8 @@ namespace Guia_9
             }
             catch (OleDbException ex)
             {
-                string error = ex.Message.Contains("valores duplicados") ? "DNI duplicado" : ex.Message;
-                MessageBox.Show(error, "Error en la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+                MessageBox.Show(ex.Message, "Error en la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             _edicion = true;
             BtnEditar.Enabled = true;
@@ -104,53 +101,53 @@ namespace Guia_9
         private void Txt_TextChanged(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
-            bool nom, ape, dni, tel, tel2, dire;
+            bool tipo, marca, modelo, stock, precio, carac;
             
-            HabilitarBtn(out nom, out ape, out dni, out tel, out tel2, out dire);
+            HabilitarBtn(out tipo, out marca, out modelo, out stock, out precio, out carac);
             Util.SacarDobleEspacio(txt);
-            RevisionIngreso(nom, ape, dni, tel, tel2, dire);
+            RevisionIngreso(tipo, marca, modelo, stock, precio, carac);
         }
 
-        private void HabilitarBtn(out bool nom, out bool ape, out bool dni, out bool tel, out bool tel2, out bool dire)
+        private void HabilitarBtn(out bool tipo, out bool marca, out bool modelo, out bool stock, out bool precio, out bool carac)
         {
-            nom = TxtNombre.Text.Length > 2;
-            ape = TxtApellido.Text.Length > 2;
-            dni = TxtDni.Text.Length == 8;
-            tel = TxtTelefono.Text.Length > 7;
-            tel2 = TxtTelefono2.Text.Length > 7;
-            dire = TxtDireccion.Text.Length > 3;
-            BtnEditar.Enabled = nom && ape && dni && tel && tel2 && dire;
+            tipo = TxtTipo.Text.Length > 2;
+            marca = TxtMarca.Text.Length > 2;
+            modelo = TxtModelo.Text.Length > 2;
+            stock = TxtStock.Text.Length > 0;
+            precio = TxtPrecio.Text.Length > 0;
+            carac = TxtCarac.Text.Length > 2;
+            BtnEditar.Enabled = tipo && marca && modelo && stock && precio && carac;
         }
-        private void RevisionIngreso(bool nom, bool ape, bool dni, bool tel, bool tel2, bool dire)
+        private void RevisionIngreso(bool tipo, bool marca, bool modelo, bool stock, bool precio, bool carac)
         {
             Ep.Clear();
-            if (!nom)
+            if (!tipo)
             {
-                Ep.SetError(TxtNombre, "El nombre debe tener mas de tres caracteres");
+                Ep.SetError(TxtTipo, "El nombre debe tener mas de tres caracteres");
             }
-            if (!ape)
+            if (!marca)
             {
-                Ep.SetError(TxtApellido, "El apellido debe tener mas de tres caracteres");
+                Ep.SetError(TxtMarca, "El apellido debe tener mas de tres caracteres");
 
             }
-            if (!dni)
+            if (!modelo)
             {
-                Ep.SetError(TxtDni, "El dni debe tener 8 numeros");
+                Ep.SetError(TxtModelo, "El dni debe tener 8 numeros");
 
             }
-            if (!tel)
+            if (!stock)
             {
-                Ep.SetError(TxtTelefono, "El telefono debe tener 8 o mas caracteres");
+                Ep.SetError(TxtStock, "El telefono debe tener 8 o mas caracteres");
 
             }
-            if (!tel2)
+            if (!precio)
             {
-                Ep.SetError(TxtTelefono2, "El telefono 2 debe tener 8 o mas caracteres");
+                Ep.SetError(TxtPrecio, "El telefono 2 debe tener 8 o mas caracteres");
 
             }
-            if (!dire)
+            if (!carac)
             {
-                Ep.SetError(TxtDireccion, "La direccion debe tener 4 o mas caracteres");
+                Ep.SetError(TxtCarac, "La direccion debe tener 4 o mas caracteres");
 
             }
         }
@@ -192,6 +189,11 @@ namespace Guia_9
         private void BtnEditar_MouseHover(object sender, EventArgs e)
         {
            
+        }
+
+        private void FormEdicion_Activated(object sender, EventArgs e)
+        {
+            TxtTipo.Focus();
         }
     }
 }

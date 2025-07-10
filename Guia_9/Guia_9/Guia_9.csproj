@@ -50,6 +50,7 @@
     <Compile Include="BackWork.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Electrodomestico.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

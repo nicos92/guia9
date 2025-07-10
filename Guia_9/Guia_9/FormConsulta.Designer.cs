@@ -35,7 +35,7 @@
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnVerTodos = new System.Windows.Forms.Button();
-            this.TxtDni = new System.Windows.Forms.TextBox();
+            this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.PanelBajo = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnEditar = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             this.TLPTop.Controls.Add(this.BtnBuscar, 1, 0);
             this.TLPTop.Controls.Add(this.label1, 0, 0);
             this.TLPTop.Controls.Add(this.BtnVerTodos, 2, 0);
-            this.TLPTop.Controls.Add(this.TxtDni, 1, 0);
+            this.TLPTop.Controls.Add(this.TxtBusqueda, 1, 0);
             this.TLPTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TLPTop.Location = new System.Drawing.Point(0, 0);
             this.TLPTop.Name = "TLPTop";
@@ -147,18 +147,18 @@
             this.BtnVerTodos.UseVisualStyleBackColor = false;
             this.BtnVerTodos.Click += new System.EventHandler(this.BtnVerTodos_Click);
             // 
-            // TxtDni
+            // TxtBusqueda
             // 
-            this.TxtDni.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.TxtDni.BackColor = System.Drawing.Color.White;
-            this.TxtDni.Location = new System.Drawing.Point(195, 19);
-            this.TxtDni.MaxLength = 50;
-            this.TxtDni.Name = "TxtDni";
-            this.TxtDni.ShortcutsEnabled = false;
-            this.TxtDni.Size = new System.Drawing.Size(250, 25);
-            this.TxtDni.TabIndex = 10;
-            this.TxtDni.TextChanged += new System.EventHandler(this.TxtDni_TextChanged);
-            this.TxtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDni_KeyPress);
+            this.TxtBusqueda.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TxtBusqueda.BackColor = System.Drawing.Color.White;
+            this.TxtBusqueda.Location = new System.Drawing.Point(195, 19);
+            this.TxtBusqueda.MaxLength = 50;
+            this.TxtBusqueda.Name = "TxtBusqueda";
+            this.TxtBusqueda.ShortcutsEnabled = false;
+            this.TxtBusqueda.Size = new System.Drawing.Size(250, 25);
+            this.TxtBusqueda.TabIndex = 10;
+            this.TxtBusqueda.TextChanged += new System.EventHandler(this.TxtDni_TextChanged);
+            this.TxtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDni_KeyPress);
             // 
             // PanelBajo
             // 
@@ -378,7 +378,7 @@
         private System.Windows.Forms.Panel PanelTop;
         private System.Windows.Forms.TableLayoutPanel TLPTop;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TxtDni;
+        private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.Button BtnBuscar;
         private System.Windows.Forms.Panel PanelBajo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

@@ -53,54 +53,54 @@ namespace Guia_9
         private void Txt_TextChanged(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
-            bool nom, ape, dni, tel, tel2, dire;
+            bool tipo, marca, modelo, stock, precio, carac;
             
-            HabilitarBtn(out nom, out ape, out dni, out tel, out tel2, out dire);
+            HabilitarBtn(out tipo, out marca, out modelo, out stock, out precio, out carac);
             Util.SacarDobleEspacio(txt);
-            RevisionIngreso(nom, ape, dni, tel, tel2, dire);
+            RevisionIngreso(tipo, marca, modelo, stock, precio, carac);
         }
 
-        private void HabilitarBtn(out bool nom, out bool ape, out bool dni, out bool tel, out bool tel2, out bool dire)
+        private void HabilitarBtn(out bool tipo, out bool marca, out bool modelo, out bool stock, out bool precio, out bool carac)
         {
-            nom = TxtNombre.Text.Length > 2;
-            ape = TxtApellido.Text.Length > 2;
-            dni = TxtDni.Text.Length == 8;
-            tel = TxtTelefono.Text.Length > 7;
-            tel2 = TxtTelefono2.Text.Length > 7;
-            dire = TxtDireccion.Text.Length > 3;
-            BtnIngresar.Enabled = nom && ape && dni && tel && tel2 && dire;
+            tipo = TxtTipo.Text.Length > 2;
+            marca = TxtMarca.Text.Length > 2;
+            modelo = TxtModelo.Text.Length > 2;
+            stock = Txtstock.Text.Length > 0;
+            precio = TxtPrecio.Text.Length > 0;
+            carac = TxtCarac.Text.Length > 2;
+            BtnIngresar.Enabled = tipo && marca && modelo && stock && precio && carac;
         }
 
-        private void RevisionIngreso(bool nom, bool ape, bool dni, bool tel, bool tel2, bool dire)
+        private void RevisionIngreso(bool tipo, bool marca, bool modelo, bool stock, bool precio, bool carac)
         {
             Ep.Clear();
-            if (!nom)
+            if (!tipo)
             {
-                Ep.SetError(TxtNombre, "El nombre debe tener mas de tres caracteres");
+                Ep.SetError(TxtTipo, "El tipo debe tener mas de dos caracteres");
             }
-            if (!ape)
+            if (!marca)
             {
-                Ep.SetError(TxtApellido, "El apellido debe tener mas de tres caracteres");
+                Ep.SetError(TxtMarca, "El marca debe tener mas de dos caracteres");
 
             }
-            if (!dni)
+            if (!modelo)
             {
-                Ep.SetError(TxtDni, "El dni debe tener 8 numeros");
+                Ep.SetError(TxtModelo, "El modelo debe tener mas de dos caracteres");
 
             }
-            if (!tel)
+            if (!stock)
             {
-                Ep.SetError(TxtTelefono, "El telefono debe tener 8 o mas caracteres");
+                Ep.SetError(Txtstock, "El stock no puede estar vacio");
 
             }
-            if (!tel2)
+            if (!precio)
             {
-                Ep.SetError(TxtTelefono2, "El telefono 2 debe tener 8 o mas caracteres");
+                Ep.SetError(TxtPrecio, "El precio no puede estar vacio");
 
             }
-            if (!dire)
+            if (!carac)
             {
-                Ep.SetError(TxtDireccion, "La direccion debe tener 4 o mas caracteres");
+                Ep.SetError(TxtCarac, "La caracteristica debe tener mas de dos caracteres");
 
             }
         }
@@ -142,9 +142,9 @@ namespace Guia_9
             bool menquin = RBtnMensual.Checked ? true : false;
             try
             {
-                string dni = TxtDni.Text;
+                string dni = TxtModelo.Text;
                 AccesoDB.ConectarDB();
-                string consulta = $"SELECT MAX(legajo) FROM personas;";
+                string consulta = $"SELECT Articulo_Codigo FROM Electrodomesticos where id = (select max(id) from electrodomesticos)";
                 lector = AccesoDB.LecturaDB(consulta);
                 while (lector.Read())
                 {
@@ -152,13 +152,13 @@ namespace Guia_9
                 }
                 lector.Close();
                 AccesoDB.CerrarDB();
+                string codigo = legajo.ToString("0000");
 
-
-
+                string fecha = DateTime.Now.ToLongDateString();
                 AccesoDB.ConectarDB();
 
-                consulta = $"INSERT INTO personas (legajo, dni, apellido, nombres, telefono, direccion, telefono2, mensualquincenal, baja) VALUES ({legajo},{TxtDni.Text},'{TxtApellido.Text.ToLower()}','{TxtNombre.Text.ToLower()}','{TxtTelefono.Text}','{TxtDireccion.Text.ToLower()}','{TxtTelefono2.Text}', {menquin}, {false});";
-
+                consulta = $"INSERT INTO Electrodomesticos (Articulo_Codigo, Articulo_Tipo, Articulo_Marca, Articulo_Modelo, Articulo_Caracteristicas, Articulo_Cantidad_Stock, Articulo_Precio, Articulo_Ingreso) VALUES ('{codigo}', '{TxtTipo.Text.ToLower()}', '{TxtMarca.Text.ToLower()}','{TxtModelo.Text.ToLower()}','{TxtCarac.Text.ToLower()}',{Txtstock.Text},{TxtPrecio.Text}, '{fecha}' );";
+               
 
                 int res = AccesoDB.DBExecuteNonQuery(consulta);
 
@@ -184,7 +184,7 @@ namespace Guia_9
 
             HabilitarBtns(true);
 
-                TxtNombre.Focus();
+                TxtTipo.Focus();
             }
         }
 
@@ -201,7 +201,7 @@ namespace Guia_9
 
         private void FormIngreso_Activated(object sender, EventArgs e)
         {
-            TxtNombre.Focus();
+            TxtTipo.Focus();
         }
     }
 }
