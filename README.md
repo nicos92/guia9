@@ -104,13 +104,13 @@ Esta es la pantalla principal que ves al abrir la aplicación.
 
 - **Para ver el estado general:** El número grande que se muestra (ej. 2) representa el total de **Personas Activas** actualmente en el sistema. No requiere ninguna acción, es solo informativo.
 
-- **Para navegar a otras secciones:** Haga clic en las pestañas + INGRESO o CONSULTA en la barra de navegación superior.
+- **Para navegar a otras secciones:** Haga clic en las pestañas INGRESO o CONSULTA en la barra de navegación superior.
 
 #### 2. Módulo de Ingreso de Personas
 
 Utilice esta sección para añadir nuevas personas al sistema.
 
-1. Haga clic en la pestaña **+ INGRESO**.
+1. Haga clic en la pestaña **INGRESO**.
 
 2. Complete todos los campos del formulario con la información de la nueva persona:
    
@@ -124,7 +124,7 @@ Utilice esta sección para añadir nuevas personas al sistema.
    
    - **Teléfono**
    
-   - **Teléfono 2** (Opcional)
+   - **Teléfono 2**
 
 3. Seleccione la **Modalidad de pago** adecuada, eligiendo entre Mensual o Quincenal.
 
