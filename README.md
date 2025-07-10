@@ -128,7 +128,7 @@ Utilice esta sección para añadir nuevas personas al sistema.
 
 3. Seleccione la **Modalidad de pago** adecuada, eligiendo entre Mensual o Quincenal.
 
-4. Una vez que todos los datos estén correctos, haga clic en el botón **+ INGRESAR** para guardar el nuevo registro.
+4. Una vez que todos los datos estén correctos, haga clic en el botón **INGRESAR** para guardar el nuevo registro.
 
 #### **3. Módulo de Consulta**
 
