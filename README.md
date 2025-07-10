@@ -24,7 +24,7 @@
 
 #### Imagenes del Proyecto
 
-![Imagen del Proyecto](/recursos\inicio.png)
+![Imagen del Proyecto](/recursos/inicio.png)
 
 ![ingreso](/recursos/ingreso.png)
 
