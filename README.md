@@ -106,7 +106,7 @@ Esta es la pantalla principal que ves al abrir la aplicación.
 
 - **Para navegar a otras secciones:** Haga clic en las pestañas + INGRESO o CONSULTA en la barra de navegación superior.
 
-#### **2. Módulo de Ingreso de Personas **
+#### 2. Módulo de Ingreso de Personas
 
 Utilice esta sección para añadir nuevas personas al sistema.
 
