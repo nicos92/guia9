@@ -20,7 +20,7 @@
 
 #### Logo del Instituto
 
-![Logo del Instituto](C:\Users\nicos92\Mi%20unidad\ISFT_N_93\2do%20B\seminario\guia_9\recursos\insti.png)
+![Logo del Instituto](.\recursos\insti.png)
 
 #### Imagenes del Proyecto
 
@@ -28,9 +28,9 @@
 
 ![ingreso](C:\Users\nicos92\Mi%20unidad\ISFT_N_93\2do%20B\seminario\guia_9\recursos\ingreso.png)
 
-![](C:\Users\nicos92\Mi%20unidad\ISFT_N_93\2do%20B\seminario\guia_9\recursos\busqueda.png)
+![](.\recursos\busqueda.png)
 
-![edicion](C:\Users\nicos92\Mi%20unidad\ISFT_N_93\2do%20B\seminario\guia_9\recursos\edicion.png)
+![edicion](.\recursos\edicion.png)
 
 ---
 
@@ -78,7 +78,9 @@ El sistema está estructurado en módulos claros y diferenciados para optimizar 
    
    - Un botón de **EDITAR** confirma y guarda los cambios en la base de datos, cerrando la ventana modal y actualizando la vista en la tabla de consulta.
 
-#### **Tecnologías Utilizadas:**
+---
+
+## **Tecnologías Utilizadas:**
 
 - **Framework:** .NET
 
@@ -92,7 +94,7 @@ Esta aplicación es una solución de software de escritorio completa y escalable
 
 ---
 
-##### **Manual de Usuario**
+## **Manual de Usuario**
 
 A continuación, se detallan las instrucciones de uso para cada una de las funciones principales de la aplicación.
 
@@ -140,9 +142,9 @@ Esta es la sección principal para buscar, visualizar, editar y eliminar registr
 
 4. La tabla se actualizará y mostrará únicamente los registros que coincidan con su búsqueda.
 
-1. Haga clic en el botón azul **TODOS**.
+5. Haga clic en el botón azul **TODOS**.
 
-2. La tabla se cargará con la lista completa de todas las personas registradas en el sistema.
+6. La tabla se cargará con la lista completa de todas las personas registradas en el sistema.
 
 #### **4. Módulo de Edición de Personas**
 
@@ -182,4 +184,10 @@ Siga estos pasos para modificar los datos de una persona ya existente.
 
 ## Licencia
 
-Este proyecto no tiene licencia
+Copyright © 2025 Sandoval Nicolás Salomón
+
+Todos los derechos reservados.
+
+Este proyecto se proporciona sin una licencia explícita, lo que significa que el autor retiene el control total sobre el software. No se concede ningún permiso para usar, copiar, modificar, distribuir o sublicenciar este proyecto o sus partes sin el consentimiento previo y por escrito del autor.
+
+**Su propósito es estrictamente para demostración y evaluación de portafolio.**
