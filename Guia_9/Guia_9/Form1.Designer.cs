@@ -75,14 +75,12 @@
             this.BtnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConsulta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.BtnConsulta.Image = global::Guia_9.Properties.Resources.user_magnifying_glass_32_blue50;
             this.BtnConsulta.Location = new System.Drawing.Point(435, 0);
             this.BtnConsulta.Margin = new System.Windows.Forms.Padding(0, 0, 1, 2);
             this.BtnConsulta.Name = "BtnConsulta";
             this.BtnConsulta.Size = new System.Drawing.Size(348, 62);
             this.BtnConsulta.TabIndex = 1;
             this.BtnConsulta.Text = "CONSULTA";
-            this.BtnConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnConsulta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnConsulta.UseVisualStyleBackColor = false;
             this.BtnConsulta.Click += new System.EventHandler(this.BtnForms);
@@ -97,14 +95,12 @@
             this.BtnIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngreso.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.BtnIngreso.Image = global::Guia_9.Properties.Resources.user_plus_32_blue50;
             this.BtnIngreso.Location = new System.Drawing.Point(87, 0);
             this.BtnIngreso.Margin = new System.Windows.Forms.Padding(0, 0, 1, 2);
             this.BtnIngreso.Name = "BtnIngreso";
             this.BtnIngreso.Size = new System.Drawing.Size(347, 62);
             this.BtnIngreso.TabIndex = 0;
             this.BtnIngreso.Text = "INGRESO";
-            this.BtnIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnIngreso.UseVisualStyleBackColor = false;
             this.BtnIngreso.Click += new System.EventHandler(this.BtnForms);
@@ -146,6 +142,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "FormPrincipal";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personas";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);

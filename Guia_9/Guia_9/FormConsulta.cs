@@ -151,6 +151,7 @@ namespace Guia_9
         private void BackWork_DoWork(object sender, DoWorkEventArgs e)
         {
             Button btn = e.Argument as Button;
+            string stock = CHstock.Checked ? " AND Articulo_Cantidad_Stock > 0 " : "  ";
             if (btn.Tag.ToString() == "0")
             {
                 _consulta = CONSULTA + " ORDER BY Id DESC;";
@@ -158,7 +159,7 @@ namespace Guia_9
             if (btn.Tag.ToString() == "1")
             {
                 // _consulta = CONSULTA + $" WHERE (dni LIKE '{TxtDni.Text}%' OR apellido LIKE '{TxtDni.Text}%' OR nombres LIKE '{TxtDni.Text}%') AND baja = False;";
-                _consulta = CONSULTA + $" WHERE (Articulo_Codigo LIKE '{TxtBusqueda.Text}%' OR Articulo_Tipo LIKE '{TxtBusqueda.Text}%' OR Articulo_Marca LIKE '{TxtBusqueda.Text}%' OR Articulo_Modelo LIKE '{TxtBusqueda.Text}%' ) AND Articulo_Cantidad_Stock > 0 ORDER BY Id DESC";
+                _consulta = CONSULTA + $" WHERE (Articulo_Codigo LIKE '{TxtBusqueda.Text}%' OR Articulo_Tipo LIKE '{TxtBusqueda.Text}%' OR Articulo_Marca LIKE '{TxtBusqueda.Text}%' OR Articulo_Modelo LIKE '{TxtBusqueda.Text}%' ) {stock} ORDER BY Id DESC";
             }
 
             BackgroundWorker worker = sender as BackgroundWorker;

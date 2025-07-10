@@ -50,6 +50,7 @@
             this.TLPCartel = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.CHstock = new System.Windows.Forms.CheckBox();
             this.PanelTop.SuspendLayout();
             this.TLPTop.SuspendLayout();
             this.PanelBajo.SuspendLayout();
@@ -73,15 +74,17 @@
             // 
             // TLPTop
             // 
-            this.TLPTop.ColumnCount = 4;
+            this.TLPTop.ColumnCount = 5;
             this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.14286F));
-            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.79221F));
-            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.TLPTop.Controls.Add(this.BtnBuscar, 1, 0);
+            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.42683F));
+            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.37805F));
+            this.TLPTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.TLPTop.Controls.Add(this.label1, 0, 0);
-            this.TLPTop.Controls.Add(this.BtnVerTodos, 2, 0);
             this.TLPTop.Controls.Add(this.TxtBusqueda, 1, 0);
+            this.TLPTop.Controls.Add(this.BtnVerTodos, 4, 0);
+            this.TLPTop.Controls.Add(this.BtnBuscar, 3, 0);
+            this.TLPTop.Controls.Add(this.CHstock, 2, 0);
             this.TLPTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TLPTop.Location = new System.Drawing.Point(0, 0);
             this.TLPTop.Name = "TLPTop";
@@ -92,7 +95,7 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BtnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BtnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnBuscar.Enabled = false;
@@ -101,14 +104,12 @@
             this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.BtnBuscar.Image = global::Guia_9.Properties.Resources.user_magnifying_glass_24_blue50;
-            this.BtnBuscar.Location = new System.Drawing.Point(481, 11);
+            this.BtnBuscar.Location = new System.Drawing.Point(547, 11);
             this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(128, 42);
+            this.BtnBuscar.Size = new System.Drawing.Size(104, 42);
             this.BtnBuscar.TabIndex = 11;
             this.BtnBuscar.Tag = "1";
             this.BtnBuscar.Text = "BUSCAR";
-            this.BtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnBuscar.UseVisualStyleBackColor = false;
             this.BtnBuscar.EnabledChanged += new System.EventHandler(this.BtnBuscar_EnabledChanged);
@@ -119,11 +120,11 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 23);
+            this.label1.Location = new System.Drawing.Point(51, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 17);
+            this.label1.Size = new System.Drawing.Size(110, 34);
             this.label1.TabIndex = 1;
-            this.label1.Text = "DNI, Apellido ó Nombre:";
+            this.label1.Text = "Código, tipo, \r\nmarca ó modelo:";
             // 
             // BtnVerTodos
             // 
@@ -135,14 +136,12 @@
             this.BtnVerTodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnVerTodos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVerTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.BtnVerTodos.Image = global::Guia_9.Properties.Resources.users_24_blue50;
-            this.BtnVerTodos.Location = new System.Drawing.Point(628, 11);
+            this.BtnVerTodos.Location = new System.Drawing.Point(677, 11);
             this.BtnVerTodos.Name = "BtnVerTodos";
-            this.BtnVerTodos.Size = new System.Drawing.Size(128, 42);
+            this.BtnVerTodos.Size = new System.Drawing.Size(72, 42);
             this.BtnVerTodos.TabIndex = 12;
             this.BtnVerTodos.Tag = "0";
             this.BtnVerTodos.Text = "TODOS";
-            this.BtnVerTodos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnVerTodos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnVerTodos.UseVisualStyleBackColor = false;
             this.BtnVerTodos.Click += new System.EventHandler(this.BtnVerTodos_Click);
@@ -151,11 +150,11 @@
             // 
             this.TxtBusqueda.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TxtBusqueda.BackColor = System.Drawing.Color.White;
-            this.TxtBusqueda.Location = new System.Drawing.Point(195, 19);
+            this.TxtBusqueda.Location = new System.Drawing.Point(167, 19);
             this.TxtBusqueda.MaxLength = 50;
             this.TxtBusqueda.Name = "TxtBusqueda";
             this.TxtBusqueda.ShortcutsEnabled = false;
-            this.TxtBusqueda.Size = new System.Drawing.Size(250, 25);
+            this.TxtBusqueda.Size = new System.Drawing.Size(238, 25);
             this.TxtBusqueda.TabIndex = 10;
             this.TxtBusqueda.TextChanged += new System.EventHandler(this.TxtDni_TextChanged);
             this.TxtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDni_KeyPress);
@@ -195,13 +194,11 @@
             this.BtnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEditar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(253)))), ((int)(((byte)(231)))));
-            this.BtnEditar.Image = global::Guia_9.Properties.Resources.user_pen_24_yellow50;
             this.BtnEditar.Location = new System.Drawing.Point(125, 11);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(128, 42);
             this.BtnEditar.TabIndex = 11;
             this.BtnEditar.Text = "EDITAR";
-            this.BtnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnEditar.UseVisualStyleBackColor = false;
             this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
@@ -338,6 +335,19 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Para editar o eliminar un registro seleccione una fila de la tabla";
             // 
+            // CHstock
+            // 
+            this.CHstock.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CHstock.AutoSize = true;
+            this.CHstock.Checked = true;
+            this.CHstock.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CHstock.Location = new System.Drawing.Point(454, 21);
+            this.CHstock.Name = "CHstock";
+            this.CHstock.Size = new System.Drawing.Size(85, 21);
+            this.CHstock.TabIndex = 13;
+            this.CHstock.Text = "Con Stock";
+            this.CHstock.UseVisualStyleBackColor = true;
+            // 
             // FormConsulta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -395,5 +405,6 @@
         private System.Windows.Forms.TableLayoutPanel TLPCartel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox CHstock;
     }
 }

@@ -108,7 +108,7 @@
             this.TxtPrecio.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TxtPrecio.BackColor = System.Drawing.Color.White;
             this.TxtPrecio.Location = new System.Drawing.Point(211, 224);
-            this.TxtPrecio.MaxLength = 10;
+            this.TxtPrecio.MaxLength = 8;
             this.TxtPrecio.Name = "TxtPrecio";
             this.TxtPrecio.ShortcutsEnabled = false;
             this.TxtPrecio.Size = new System.Drawing.Size(350, 25);
@@ -121,7 +121,7 @@
             this.Txtstock.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Txtstock.BackColor = System.Drawing.Color.White;
             this.Txtstock.Location = new System.Drawing.Point(211, 181);
-            this.Txtstock.MaxLength = 10;
+            this.Txtstock.MaxLength = 8;
             this.Txtstock.Name = "Txtstock";
             this.Txtstock.ShortcutsEnabled = false;
             this.Txtstock.Size = new System.Drawing.Size(350, 25);
@@ -318,13 +318,11 @@
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnIngresar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.BtnIngresar.Image = global::Guia_9.Properties.Resources.user_plus_24_blue50;
             this.BtnIngresar.Location = new System.Drawing.Point(316, 8);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(148, 48);
             this.BtnIngresar.TabIndex = 0;
             this.BtnIngresar.Text = "INGRESAR";
-            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnIngresar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnIngresar.UseVisualStyleBackColor = false;
             this.BtnIngresar.EnabledChanged += new System.EventHandler(this.BtnIngresar_EnabledChanged);

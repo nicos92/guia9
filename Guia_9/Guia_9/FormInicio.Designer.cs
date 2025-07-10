@@ -36,7 +36,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Guia_9.Properties.Resources.users;
             this.pictureBox1.Location = new System.Drawing.Point(89, 63);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 204);
@@ -49,7 +48,7 @@
             this.LblCant.AutoSize = true;
             this.LblCant.BackColor = System.Drawing.Color.Transparent;
             this.LblCant.Font = new System.Drawing.Font("Segoe UI", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCant.Location = new System.Drawing.Point(337, 153);
+            this.LblCant.Location = new System.Drawing.Point(180, 150);
             this.LblCant.Name = "LblCant";
             this.LblCant.Size = new System.Drawing.Size(275, 128);
             this.LblCant.TabIndex = 1;
@@ -62,7 +61,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(351, 69);
+            this.label1.Location = new System.Drawing.Point(194, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(396, 94);
             this.label1.TabIndex = 2;

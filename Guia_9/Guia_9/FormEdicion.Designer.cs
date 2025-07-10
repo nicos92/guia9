@@ -124,13 +124,11 @@
             this.BtnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEditar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(253)))), ((int)(((byte)(231)))));
-            this.BtnEditar.Image = global::Guia_9.Properties.Resources.user_pen_24_yellow50;
             this.BtnEditar.Location = new System.Drawing.Point(376, 11);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(128, 42);
             this.BtnEditar.TabIndex = 12;
             this.BtnEditar.Text = "EDITAR";
-            this.BtnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnEditar.UseVisualStyleBackColor = false;
             this.BtnEditar.EnabledChanged += new System.EventHandler(this.BtnEditar_EnabledChanged);
@@ -237,7 +235,7 @@
             this.TxtPrecio.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TxtPrecio.BackColor = System.Drawing.Color.White;
             this.TxtPrecio.Location = new System.Drawing.Point(159, 179);
-            this.TxtPrecio.MaxLength = 10;
+            this.TxtPrecio.MaxLength = 8;
             this.TxtPrecio.Name = "TxtPrecio";
             this.TxtPrecio.ShortcutsEnabled = false;
             this.TxtPrecio.Size = new System.Drawing.Size(350, 25);
@@ -261,7 +259,7 @@
             this.TxtStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TxtStock.BackColor = System.Drawing.Color.White;
             this.TxtStock.Location = new System.Drawing.Point(159, 148);
-            this.TxtStock.MaxLength = 10;
+            this.TxtStock.MaxLength = 8;
             this.TxtStock.Name = "TxtStock";
             this.TxtStock.ShortcutsEnabled = false;
             this.TxtStock.Size = new System.Drawing.Size(350, 25);
