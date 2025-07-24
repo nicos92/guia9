@@ -20,17 +20,17 @@
 
 #### Logo del Instituto
 
-![Logo del Instituto](/recursos/insti.png)
+![Logo del Instituto](recursos/insti.png)
 
 #### Imagenes del Proyecto
 
-![Imagen del Proyecto](/recursos/inicio.png)
+![Inicio](recursos/inicio.png)
 
-![ingreso](/recursos/ingreso.png)
+![ingreso](recursos/ingreso.png)
 
-![](/recursos/busqueda.png)
+![busqueda](recursos/busqueda.png)
 
-![edicion](/recursos/edicion.png)
+![edicion](recursos/edicion.png)
 
 ---
 
