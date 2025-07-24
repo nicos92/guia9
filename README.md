@@ -1,10 +1,12 @@
+---
+
 # Proyecto: Guia 9 - ABM de entidad
 
 ## Profesor: Ezequiel Pacífico
 
 ## Alumno: Nicolás Salomón Sandoval
 
----
+
 
 ### Instituto Instituto superior de formación técnica Nº93
 
@@ -14,7 +16,7 @@
 
 ### Curso: 2º B
 
----
+
 
 ### Imágenes
 
@@ -32,7 +34,7 @@
 
 ![edicion](recursos/edicion.png)
 
----
+
 
 ## Descripción
 
@@ -78,7 +80,7 @@ El sistema está estructurado en módulos claros y diferenciados para optimizar 
    
    - Un botón de **EDITAR** confirma y guarda los cambios en la base de datos, cerrando la ventana modal y actualizando la vista en la tabla de consulta.
 
----
+
 
 ## **Tecnologías Utilizadas:**
 
@@ -92,7 +94,7 @@ El sistema está estructurado en módulos claros y diferenciados para optimizar 
 
 Esta aplicación es una solución de software de escritorio completa y escalable, perfecta para cualquier entorno que requiera una gestión de personal o clientes de manera organizada, rápida y segura.
 
----
+
 
 ## **Manual de Usuario**
 
@@ -180,7 +182,7 @@ Siga estos pasos para modificar los datos de una persona ya existente.
 
 5. El registro de la persona será eliminado de la base de datos y desaparecerá de la tabla.
 
----
+
 
 ## Licencia
 
@@ -191,3 +193,5 @@ Todos los derechos reservados.
 Este proyecto se proporciona sin una licencia explícita, lo que significa que el autor retiene el control total sobre el software. No se concede ningún permiso para usar, copiar, modificar, distribuir o sublicenciar este proyecto o sus partes sin el consentimiento previo y por escrito del autor.
 
 **Su propósito es estrictamente para demostración y evaluación de portafolio.**
+
+---
