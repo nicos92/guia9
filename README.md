@@ -18,7 +18,7 @@
 
 
 
-### Imágenes
+## Imágenes
 
 #### Logo del Instituto
 
